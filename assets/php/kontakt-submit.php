@@ -103,9 +103,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require __DIR__ . '/../../config.php';
-require __DIR__ . '/../../vendor/phpmailer/Exception.php';
-require __DIR__ . '/../../vendor/phpmailer/PHPMailer.php';
-require __DIR__ . '/../../vendor/phpmailer/SMTP.php';
+require __DIR__ . '/../../PHPMailer/PHPMailer-7.0.2/src/Exception.php';
+require __DIR__ . '/../../PHPMailer/PHPMailer-7.0.2/src/PHPMailer.php';
+require __DIR__ . '/../../PHPMailer/PHPMailer-7.0.2/src/SMTP.php';
 
 $mail = new PHPMailer(true);
 

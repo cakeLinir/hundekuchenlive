@@ -80,6 +80,9 @@ select {
   font: inherit;
 }
 
+.form-status--error   { color: #ff7070; }
+.form-status--success { color: #53e89b; }
+
 .container {
   margin: 0 auto;
   max-width: var(--max);

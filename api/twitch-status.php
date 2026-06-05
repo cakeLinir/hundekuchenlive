@@ -23,11 +23,9 @@ function http_post($url, $postFields) {
     if ($response === false) {
         throw new Exception('POST request failed: ' . $error);
     }
-
     if ($httpCode < 200 || $httpCode >= 300) {
         throw new Exception('POST request returned HTTP ' . $httpCode . ': ' . $response);
     }
-
     return $response;
 }
 
@@ -46,35 +44,50 @@ function http_get($url, $headers = []) {
     if ($response === false) {
         throw new Exception('GET request failed: ' . $error);
     }
-
     if ($httpCode < 200 || $httpCode >= 300) {
         throw new Exception('GET request returned HTTP ' . $httpCode . ': ' . $response);
     }
-
     return $response;
 }
 
-try {
-    // 1. App Access Token holen
-    $tokenResponse = http_post('https://id.twitch.tv/oauth2/token', [
-        'client_id' => $clientId,
-        'client_secret' => $clientSecret,
-        'grant_type' => 'client_credentials'
-    ]);
+// Returns a cached app access token, fetching a new one only when expired.
+function getAccessToken(string $clientId, string $clientSecret): string {
+    $cacheFile = sys_get_temp_dir() . '/hkl_twitch_token.json';
 
-    $tokenData = json_decode($tokenResponse, true);
-    if (!isset($tokenData['access_token'])) {
+    if (file_exists($cacheFile)) {
+        $cached = json_decode((string) file_get_contents($cacheFile), true);
+        // Keep using the cached token until 5 minutes before expiry
+        if (isset($cached['token'], $cached['expires_at']) && $cached['expires_at'] > time() + 300) {
+            return $cached['token'];
+        }
+    }
+
+    $data = json_decode(http_post('https://id.twitch.tv/oauth2/token', [
+        'client_id'     => $clientId,
+        'client_secret' => $clientSecret,
+        'grant_type'    => 'client_credentials',
+    ]), true);
+
+    if (!isset($data['access_token'])) {
         throw new Exception('No access token returned by Twitch.');
     }
 
-    $accessToken = $tokenData['access_token'];
+    file_put_contents($cacheFile, json_encode([
+        'token'      => $data['access_token'],
+        'expires_at' => time() + ($data['expires_in'] ?? 3600),
+    ]));
 
-    // 2. Streamstatus abfragen
+    return $data['access_token'];
+}
+
+try {
+    $accessToken = getAccessToken($clientId, $clientSecret);
+
     $streamResponse = http_get(
         'https://api.twitch.tv/helix/streams?user_login=' . urlencode($userLogin),
         [
             'Client-ID: ' . $clientId,
-            'Authorization: Bearer ' . $accessToken
+            'Authorization: Bearer ' . $accessToken,
         ]
     );
 
@@ -86,24 +99,20 @@ try {
 
     if (count($streamData['data']) > 0) {
         $stream = $streamData['data'][0];
-
         echo json_encode([
-            'live' => true,
-            'title' => $stream['title'] ?? '',
-            'game_name' => $stream['game_name'] ?? '',
+            'live'         => true,
+            'title'        => $stream['title'] ?? '',
+            'game_name'    => $stream['game_name'] ?? '',
             'viewer_count' => $stream['viewer_count'] ?? 0,
-            'started_at' => $stream['started_at'] ?? null
+            'started_at'   => $stream['started_at'] ?? null,
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     } else {
-        echo json_encode([
-            'live' => false
-        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        echo json_encode(['live' => false], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
-
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode([
-        'live' => false,
-        'error' => $e->getMessage()
+        'live'  => false,
+        'error' => $e->getMessage(),
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }

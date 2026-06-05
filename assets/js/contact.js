@@ -144,16 +144,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok || !data.success) {
         const msg = data.error || 'Beim Senden ist ein Fehler aufgetreten. Bitte versuche es später erneut.';
         statusEl.textContent = msg;
-        statusEl.style.color = '#ff7070';
+        statusEl.className = 'form-status sub form-status--error';
       } else {
         statusEl.textContent = data.message || 'Vielen Dank! Deine Anfrage wurde erfolgreich gesendet.';
-        statusEl.style.color = '#53e89b';
+        statusEl.className = 'form-status sub form-status--success';
         form.reset();
       }
     } catch (err) {
       console.error('Kontaktformular Fehler:', err);
       statusEl.textContent = 'Netzwerkfehler. Bitte überprüfe deine Verbindung und versuche es erneut.';
-      statusEl.style.color = '#ff7070';
+      statusEl.className = 'form-status sub form-status--error';
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
