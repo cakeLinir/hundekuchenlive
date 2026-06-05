@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("hkl-theme");
+        const safeTheme = theme === "light" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", safeTheme);
+        document.documentElement.style.colorScheme = safeTheme;
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.style.colorScheme = "dark";
+      }
+    })();
+  </script>
+
+  <title>hundekuchenlive | Gaming & Livestreams</title>
+  <meta name="description"
+    content="Gaming-Streams, Community und Projekte rund um hundekuchenlive. GTA RP, Valorant, Satisfactory und mehr – mit Gamer-Quiz, Twitch-Content und Community-Projekten.">
+
+  <link rel="canonical" href="https://hundekuchenlive.de/">
+
+  <meta property="og:title" content="hundekuchenlive | Gaming & Livestreams">
+  <meta property="og:description"
+    content="Gaming-Streams, Community, Gamer-Quiz und Projekte rund um hundekuchenlive. GTA RP, Valorant, Satisfactory und mehr.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hundekuchenlive.de/">
+  <meta property="og:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="hundekuchenlive – Gaming, Streams & Community">
+  <meta name="twitter:description"
+    content="Gaming-Streams, Community, Gamer-Quiz und Projekte rund um hundekuchenlive.">
+  <meta name="twitter:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/home.css">
+  <link rel="stylesheet" href="/assets/css/quiz.css">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon.png">
+
+  <script src="/assets/js/consent-manager.js" defer></script>
+  <script src="/assets/js/layout.js" defer></script>
+  <script src="/assets/js/consent-embeds.js" defer></script>
+  <script src="/assets/js/twitch-status.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/quiz.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "hundekuchenlive",
+    "alternateName": "Justin",
+    "url": "https://hundekuchenlive.de",
+    "image": "https://hundekuchenlive.de/assets/img/og-image.jpg",
+    "sameAs": [
+      "https://www.twitch.tv/hundekuchenlive",
+      "https://www.tiktok.com/@hundekuchenlive",
+      "https://discord.gg/WfTbuyhXcJ",
+      "https://www.youtube.com/@hundekuchenlive"
+    ],
+    "description": "Gaming-Streams, Community und Projekte rund um hundekuchenlive. GTA RP, Valorant und Satisfactory."
+  }
+  </script>
+</head>
+
+<body>
+  <header id="site-header" role="banner"></header>
+  <main class="container">
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="card hero-main">
+          <h1>Gaming. Community. Leidenschaft.</h1>
+          <p>
+            Willkommen auf der offiziellen Seite von
+            <strong>hundekuchenlive</strong>.
+          </p>
+          <p>
+            Gaming-Streams mit Fokus auf GTA RP, Valorant und Satisfactory.
+            Live auf Twitch, ergänzt durch Clips auf TikTok und Community-Projekte.
+          </p>
+          <p>
+            Mehr Details findest du im <a href="/streamingplan/">Streamingplan</a>
+            oder im <a href="/about/">Über mich</a>-Bereich.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="https://discord.gg/WfTbuyhXcJ" target="_blank" rel="noopener noreferrer">Discord</a>
+            <a class="btn" href="https://youtube.com/@hundekuchenlive" target="_blank"
+              rel="noopener noreferrer">YouTube</a>
+            <a class="btn" href="https://tiktok.com/@hundekuchenlive" target="_blank"
+              rel="noopener noreferrer">TikTok</a>
+            <a class="btn" href="/partner/">Partnerbereich</a>
+          </div>
+        </div>
+        <div class="card hero-side">
+          <div class="kpi">
+            <div class="label">Aktueller Fokus</div>
+            <div class="value">GTA RP • Valorant • Satisfactory</div>
+          </div>
+          <div class="kpi">
+            <div class="label">Business</div>
+            <div class="value">
+              <a href="mailto:business@hundekuchenlive.de">business@hundekuchenlive.de</a>
+            </div>
+          </div>
+          <div class="kpi">
+            <div class="label">Stream-Status</div>
+            <div class="value offline" id="twitch-status">Status wird geladen...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mini-quiz-section" id="gamerwissens-quiz" aria-labelledby="mini-quiz-title">
+      <div class="mini-quiz-intro">
+        <h2 id="mini-quiz-title">Gamer-Quiz</h2>
+        <p class="sub">
+          Teste dein Gaming-Wissen direkt auf der Startseite. Beantworte die Fragen, sammle Punkte
+          und starte jederzeit einen neuen Versuch.
+        </p>
+      </div>
+      <div id="mini-quiz-container" class="mini-quiz-card">
+        <div class="mini-quiz-header">
+          <div>
+            <h3>Bereit für die nächste Frage?</h3>
+            <p class="mini-quiz-meta" id="mini-quiz-question-counter">Frage 1 / 1</p>
+          </div>
+          <div class="mini-quiz-score" id="mini-quiz-score-inline">Punkte: 0</div>
+        </div>
+        <div class="mini-quiz-progress-bar" aria-hidden="true">
+          <div id="mini-quiz-progress" class="mini-quiz-progress-fill"></div>
+        </div>
+        <h4 class="mini-quiz-question" id="mini-quiz-question"></h4>
+        <div class="mini-quiz-answers" id="mini-quiz-answers"></div>
+        <div class="mini-quiz-actions">
+          <button id="mini-quiz-next-btn" class="mini-quiz-btn mini-quiz-btn-next" type="button" disabled>
+            Nächste Frage
+          </button>
+        </div>
+      </div>
+      <div class="mini-quiz-result" id="mini-quiz-result" hidden>
+        <h3>Quiz beendet!</h3>
+        <p>Deine Punktzahl: <strong id="mini-quiz-score"></strong></p>
+        <p id="mini-quiz-score-text"></p>
+        <button id="mini-quiz-restart-btn" class="mini-quiz-btn mini-quiz-btn-restart" type="button">
+          Nochmal spielen
+        </button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Aktuelles</h2>
+      <p class="sub">Neuigkeiten, Projektstarts und wichtige Updates.</p>
+      <div class="grid">
+        <div class="tile">
+          <h3>Projektstart: HomeState</h3>
+          <p>Einreise des Charakters Tom Baum.</p>
+          <p class="sub">07. April 2026</p>
+        </div>
+        <div class="tile">
+          <h3>Platzhalter</h3>
+          <p>Platzhalter-Inhalt</p>
+          <p class="sub">TT.MM.JJJJ</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Sponsoren &amp; Partner</h2>
+      <p class="sub">Aktuelle Partner und zukünftige Kooperationen.</p>
+      <div class="grid">
+        <div class="tile partner-tile">
+          <div class="partner-head">
+            <h3>Instant Gaming</h3>
+            <span class="partner-badge">Affiliate-Partner</span>
+          </div>
+          <div class="ig-banner-slot" data-consent-vendor="instant-gaming"></div>
+          <p>
+            Günstige Spiele, regelmäßige Aktionen und schnelle digitale Lieferung.
+          </p>
+          <p>
+            Über den Partnerlink unterstützt du mich ohne zusätzliche Kosten.
+          </p>
+          <div class="partner-links">
+            <a class="btn" href="https://www.instant-gaming.com/?igr=hundekuchen" target="_blank"
+              rel="nofollow sponsored noopener noreferrer">
+              Zum Shop
+            </a>
+            <a class="btn" href="https://www.instant-gaming.com/de/giveaway/instantgamingde?igr=hundekuchen"
+              target="_blank" rel="nofollow sponsored noopener noreferrer">
+              Gewinnspiel
+            </a>
+          </div>
+        </div>
+        <div class="tile partner-tile">
+          <div class="partner-head vertical">
+            <h3>MoneyQuest</h3>
+            <img src="/assets/img/moneyquest_logo.png" alt="MoneyQuest Logo" class="partner-logo hero" loading="lazy"
+              decoding="async">
+          </div>
+          <p>
+            Finanzberatung für Gamer &amp; Streamer.<br>
+            Deine Finanzen sind dein größtes Abenteuer.
+          </p>
+          <p>
+            MoneyQuest ist keine Item-Sammlung, sondern eine Komplettlösung:
+            Von der Starterzone bis zum Endboss – mit klarer Strategie,
+            Quests und persönlicher 1:1-Beratung.
+          </p>
+          <div class="partner-links">
+            <a class="btn" href="https://www.money-quest.de/" target="_blank"
+              rel="nofollow sponsored noopener noreferrer">
+              Mehr erfahren
+            </a>
+            <a class="btn" href="https://leistunglohntsich.typeform.com/to/ixsu066c#ref=Hundekuchen" target="_blank"
+              rel="noopener noreferrer">
+              Kontakt aufnehmen
+            </a>
+          </div>
+        </div>
+        <div class="tile">
+          <h3>Platz für Sponsor</h3>
+          <p>Logo • Kurztext • Link</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" role="contentinfo"></footer>
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/quiz.js" defer></script>
+</body>
+
+</html>

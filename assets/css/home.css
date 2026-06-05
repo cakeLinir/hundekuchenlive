@@ -1,0 +1,78 @@
+.partner-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.partner-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Standard-Logo */
+.partner-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Große Logos */
+.partner-logo.large {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+/* Vertikaler Partnerkopf, z. B. MoneyQuest */
+.partner-head.vertical {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Hero-Logo, z. B. MoneyQuest */
+.partner-logo.hero {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+}
+
+/* Buttons in Partnerkarten sauber umbrechen */
+.partner-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Instant-Gaming-Banner / Consent-Slot */
+.ig-banner-slot {
+  margin: 10px 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.consent-placeholder {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  min-height: 160px;
+  padding: 18px;
+  text-align: center;
+}
+
+.consent-placeholder p {
+  margin: 0;
+}

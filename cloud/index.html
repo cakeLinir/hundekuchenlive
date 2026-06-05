@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("hkl-theme");
+        const safeTheme = theme === "light" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", safeTheme);
+        document.documentElement.style.colorScheme = safeTheme;
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.style.colorScheme = "dark";
+      }
+    })();
+  </script>
+
+  <title>Creator-Cloud | hundekuchenlive</title>
+  <meta name="description"
+    content="Geschützter Cloud-Bereich von hundekuchenlive für Rohmaterial, Schnittprojekte und fertige Videos.">
+
+  <link rel="canonical" href="https://hundekuchenlive.de/cloud/">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Creator-Cloud | hundekuchenlive">
+  <meta property="og:description"
+    content="Geschützter Cloud-Bereich für Rohmaterial, Schnittprojekte und fertige Videos.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hundekuchenlive.de/cloud/">
+  <meta property="og:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <!-- Twitter / Discord Vorschau -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Creator-Cloud | hundekuchenlive">
+  <meta name="twitter:description"
+    content="Geschützter Cloud-Bereich für Rohmaterial, Schnittprojekte und fertige Videos.">
+  <meta name="twitter:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/cloud.css">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon.png">
+
+  <script src="/assets/js/layout.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Creator-Cloud",
+    "url": "https://hundekuchenlive.de/cloud/",
+    "description": "Geschützter Cloud-Bereich von hundekuchenlive für Rohmaterial, Schnittprojekte und fertige Videos.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "hundekuchenlive",
+      "url": "https://hundekuchenlive.de/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <header id="site-header" role="banner"></header>
+
+  <main class="container cloud-page">
+
+    <section class="hero cloud-hero">
+      <div class="hero-grid">
+
+        <div class="card hero-main cloud-hero-main">
+          <h1>Creator-Cloud</h1>
+
+          <p>
+            Die Creator-Cloud ist der geschützte Austauschbereich für Rohmaterial,
+            Schnittprojekte und fertige Videos rund um <strong>hundekuchenlive</strong>.
+          </p>
+
+          <p>
+            Hier können große Videodateien strukturiert bereitgestellt, bearbeitete Inhalte zurückgegeben
+            und Projektdateien sicher zwischen berechtigten Personen ausgetauscht werden.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="btn primary"
+              href="https://cloud.hundekuchenlive.de/"
+              target="_blank"
+              rel="noopener noreferrer">
+              Cloud öffnen
+            </a>
+
+            <a class="btn" href="#workflow">
+              Workflow ansehen
+            </a>
+          </div>
+        </div>
+
+        <aside class="card hero-side cloud-status-card" aria-label="Cloud-Status">
+          <div class="kpi">
+            <div class="label">System</div>
+            <div class="value">Nextcloud</div>
+          </div>
+
+          <div class="kpi">
+            <div class="label">Zweck</div>
+            <div class="value">Videoaustausch</div>
+          </div>
+
+          <div class="kpi">
+            <div class="label">Zugriff</div>
+            <div class="value">Nur berechtigte Personen</div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <section class="section" id="workflow">
+      <h2>Workflow</h2>
+      <p class="sub">
+        Der Bereich ist für den Austausch zwischen hundekuchenlive und berechtigten Projektbeteiligten gedacht.
+      </p>
+
+      <div class="grid cloud-workflow-grid">
+        <article class="tile cloud-tile">
+          <span class="cloud-step">01</span>
+          <h3>Rohmaterial bereitstellen</h3>
+          <p>
+            Streammitschnitte, Rohclips oder Projektdateien werden in der Cloud strukturiert abgelegt.
+          </p>
+        </article>
+
+        <article class="tile cloud-tile">
+          <span class="cloud-step">02</span>
+          <h3>Schnitt & Bearbeitung</h3>
+          <p>
+            Berechtigte Personen können benötigtes Material herunterladen und für den Videoschnitt verwenden.
+          </p>
+        </article>
+
+        <article class="tile cloud-tile">
+          <span class="cloud-step">03</span>
+          <h3>Rückgabe fertiger Videos</h3>
+          <p>
+            Fertige Clips, Schnittfassungen oder Exportdateien können über die Cloud wieder zurückgegeben werden.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Sicherheit & Zugriff</h2>
+      <p class="sub">
+        Die Cloud ist kein öffentlicher Uploadbereich, sondern ein geschützter Arbeitsbereich.
+      </p>
+
+      <div class="grid cloud-info-grid">
+        <article class="tile cloud-tile">
+          <h3>Geschützter Zugang</h3>
+          <p>
+            Zugriff erhalten nur berechtigte Personen. Öffentliche Uploads ohne Freigabe sind nicht vorgesehen.
+          </p>
+        </article>
+
+        <article class="tile cloud-tile">
+          <h3>Projektbezogene Nutzung</h3>
+          <p>
+            Die Cloud dient dem Austausch von Material für Content-Produktion, Videoschnitt und Projektarbeit.
+          </p>
+        </article>
+
+        <article class="tile cloud-tile">
+          <h3>Keine Website-Uploads</h3>
+          <p>
+            Uploads laufen nicht über die normale Website, sondern direkt über die geschützte Cloud-Oberfläche.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel cloud-panel">
+        <h2>Hinweis zur Nutzung</h2>
+
+        <p>
+          Die Cloud kann große Videodateien, Projektmaterial und fertige Schnittfassungen enthalten.
+          Inhalte dürfen nur für den vorgesehenen Projektzweck verwendet werden.
+        </p>
+
+        <p>
+          Falls du Zugriff benötigst oder ein bestehender Zugriff nicht funktioniert,
+          nutze bitte den direkten Kontakt mit hundekuchenlive.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="btn primary"
+            href="https://cloud.hundekuchenlive.de/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Zur Nextcloud
+          </a>
+
+          <a class="btn" href="mailto:business@hundekuchenlive.de">
+            Kontakt aufnehmen
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer" role="contentinfo"></footer>
+
+</body>
+
+</html>

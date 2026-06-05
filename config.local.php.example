@@ -1,0 +1,8 @@
+<?php
+// Copy this file to config.local.php and fill in your credentials.
+putenv('SMTP_HOST=smtp.ionos.de');
+putenv('SMTP_USER=no-reply@yourdomain.de');
+putenv('SMTP_PASS=your-smtp-password-here');
+putenv('SMTP_PORT=587');
+putenv('TWITCH_CLIENT_ID=your-twitch-client-id');
+putenv('TWITCH_CLIENT_SECRET=your-twitch-client-secret');

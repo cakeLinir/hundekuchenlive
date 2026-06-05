@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("hkl-theme");
+        const safeTheme = theme === "light" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", safeTheme);
+        document.documentElement.style.colorScheme = safeTheme;
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.style.colorScheme = "dark";
+      }
+    })();
+  </script>
+  <title>Über mich | hundekuchenlive</title>
+  <meta name="description"
+    content="Mehr über hundekuchenlive, Gaming-Streams, Community und Content rund um GTA RP, Valorant, Satisfactory und mehr.">
+
+  <link rel="canonical" href="https://hundekuchenlive.de/about/">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Über mich | hundekuchenlive">
+  <meta property="og:description" content="Mehr über hundekuchenlive, Gaming Streams, Community und Projekte.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hundekuchenlive.de/about/">
+  <meta property="og:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <!-- Twitter / Discord Vorschau -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Über mich | hundekuchenlive">
+  <meta name="twitter:description"
+    content="Mehr über hundekuchenlive, den Content, die Community und die Ausrichtung des Kanals.">
+  <meta name="twitter:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/about.css">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "hundekuchenlive",
+    "alternateName": "Justin",
+    "url": "https://hundekuchenlive.de",
+    "image": "https://hundekuchenlive.de/assets/img/og-image.jpg",
+    "sameAs": [
+      "https://www.twitch.tv/hundekuchenlive",
+      "https://www.tiktok.com/@hundekuchenlive",
+      "https://discord.gg/WfTbuyhXcJ",
+      "https://www.youtube.com/@hundekuchenlive"
+    ],
+    "description": "Gaming Streams, Community und Projekte rund um hundekuchenlive. GTA RP, Valorant und Satisfactory."
+  }
+  </script>
+</head>
+
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="container section about-page">
+
+    <section class="section">
+      <div class="panel about-panel">
+        <h1>Über mich</h1>
+        <p class="sub">Gaming, Community und langfristiger Content.</p>
+
+        <div class="about-intro">
+          <p>
+            Ich bin Justin, online besser bekannt als <strong>hundekuchenlive</strong>.
+            Seit 2018 teile ich meine Leidenschaft für Gaming und Unterhaltung auf Twitch.
+            Mein Fokus liegt auf einer aktiven Community, wiedererkennbarem Content und Projekten,
+            die langfristig wachsen können.
+          </p>
+
+          <p>
+            Seit 2024 liegt ein besonderer Schwerpunkt auf GTA Roleplay, ergänzt durch Valorant,
+            Satisfactory und weitere Games. Highlights und kurze Ausschnitte findest du zusätzlich
+            auf TikTok und YouTube.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="https://www.twitch.tv/hundekuchenlive" target="_blank" rel="noopener noreferrer">
+              Twitch öffnen
+            </a>
+            <a class="btn" href="https://tiktok.com/@hundekuchenlive" target="_blank" rel="noopener noreferrer">
+              TikTok öffnen
+            </a>
+            <a class="btn" href="/streamingplan/">
+              Streamingplan
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Wofür hundekuchenlive steht</h2>
+      <p class="sub">Nicht nur Streams, sondern ein Auftritt mit Wiedererkennung.</p>
+
+      <div class="about-highlight-grid">
+        <div class="tile">
+          <h3>Community</h3>
+          <p>
+            Ein freundlicher Umgang, gemeinsame Projekte und echte Einbindung der Zuschauer stehen im Mittelpunkt.
+          </p>
+        </div>
+
+        <div class="tile">
+          <h3>Langfristigkeit</h3>
+          <p>
+            Der Kanal ist nicht auf kurzfristigen Hype ausgelegt, sondern auf beständigen Content und Entwicklung.
+          </p>
+        </div>
+
+        <div class="tile">
+          <h3>Transparenz</h3>
+          <p>
+            Ehrliche Kommunikation, nachvollziehbare Entscheidungen und ein offener Umgang mit Projekten und Ideen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Content-Schwerpunkte</h2>
+      <p class="sub">Die wichtigsten Inhalte auf einen Blick.</p>
+
+      <div class="about-content-grid">
+        <div class="tile">
+          <h3>GTA Roleplay</h3>
+          <p>
+            Medical Roleplay auf HomeState mit Feuerwehr und Rettungsdienst.
+          </p>
+        </div>
+
+        <div class="tile">
+          <h3>Valorant</h3>
+          <p>
+            Ranked, Teamplay und Chaos. Kompetitiv, direkt und meistens nicht ganz nach Plan.
+          </p>
+        </div>
+
+        <div class="tile">
+          <h3>Weitere Games & Zeiten</h3>
+          <p>
+            Dazu kommen gelegentlich No Man's Sky, Rocket League, Satisfactory und spontane Gaming-Sessions.
+            Feste Streamingzeiten sind aktuell Dienstag, Donnerstag und Samstag ab 20&nbsp;Uhr.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel about-panel">
+        <h2>Kooperationen</h2>
+        <p>
+          Partner- und Business-Anfragen bitte an:
+          <a href="mailto:business@hundekuchenlive.de">business@hundekuchenlive.de</a>
+        </p>
+        <p class="sub" style="margin-bottom:0;">
+          Für Kooperationen, Sponsoring oder gemeinsame Projekte ist dies der richtige Ansprechpartner.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="/assets/js/layout.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+
+</body>
+
+</html>

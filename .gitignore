@@ -1,0 +1,64 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+.idea/
+*.code-workspace
+
+# Logs
+*.log
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Local secret/config files
+config.local.php
+config.php.local
+secrets.php
+credentials.php
+
+# Nextcloud setup wizard — remove from server after setup
+setup-nextcloud.php
+
+# Dependency folders
+node_modules/
+vendor/
+
+# Build / cache
+dist/
+build/
+.cache/
+tmp/
+temp/
+coverage/
+
+# Archives / backups
+*.zip
+*.tar
+*.gz
+*.rar
+*.bak
+*.old
+
+# Runtime / temp files
+*.pid
+*.tmp
+*.swp
+
+# Uploads / generated
+uploads/
+generated/
+export/
+backup/
+backups/
+
+.claude/

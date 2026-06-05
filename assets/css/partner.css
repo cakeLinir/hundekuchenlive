@@ -1,0 +1,532 @@
+/* =========================
+   PARTNERSEITE
+========================= */
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* Karten allgemein */
+.partner-card {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px var(--shadow);
+}
+
+.partner-card.featured {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+}
+
+.partner-card.empty {
+  min-height: 220px;
+  justify-content: center;
+}
+
+/* Medienbereiche */
+.partner-media,
+.partner-media-ig,
+.partner-media-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.03);
+  border-right: 1px solid var(--stroke);
+}
+
+.partner-media {
+  padding: 18px;
+}
+
+.partner-media-ig,
+.partner-media-brand {
+  padding: 24px;
+  position: relative;
+}
+
+.partner-media-ig::before,
+.partner-media-brand::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: calc(var(--radius) - 6px);
+  pointer-events: none;
+}
+
+.partner-media-ig::before {
+  background:
+    radial-gradient(220px 220px at 50% 35%, rgba(255, 255, 255, 0.08), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+}
+
+.partner-media-brand::before {
+  background:
+    radial-gradient(220px 220px at 50% 35%, rgba(255, 255, 255, 0.06), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0));
+}
+
+/* Banner / Logos */
+.partner-banner {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.ig-banner {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
+}
+
+.partner-brand-image {
+  display: block;
+  width: 100%;
+  max-width: 230px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.28));
+}
+
+.partner-logo {
+  object-fit: contain;
+}
+
+.partner-logo.hero {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+}
+
+/* Inhalte in Karten */
+.partner-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px;
+}
+
+.partner-content h3 {
+  margin: 10px 0 12px;
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.partner-content p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.partner-content > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Badge / Head */
+.partner-badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 12px;
+
+  background: rgba(74, 163, 255, 0.14);
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+
+  color: var(--primary-2);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.partner-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.partner-head.vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* Links in Partner-Karten */
+.partner-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 4px 0 16px;
+}
+
+.partner-note {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* Drei-Spalten-Bereich: Pakete */
+.partner-grid.three-col .partner-card {
+  grid-column: span 4;
+  max-height: 360px;
+  overflow: hidden;
+}
+
+.partner-grid.three-col .partner-card .partner-content {
+  justify-content: flex-start;
+  padding: 20px 18px 18px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Scrollbar Paketkarten */
+.partner-grid.three-col .partner-card .partner-content::-webkit-scrollbar,
+.package-preview-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.partner-grid.three-col .partner-card .partner-content::-webkit-scrollbar-track,
+.package-preview-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.partner-grid.three-col .partner-card .partner-content::-webkit-scrollbar-thumb,
+.package-preview-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+
+/* =========================
+   KONTAKTBEREICH / FORMULAR
+========================= */
+
+.contact-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* 2-Spalten-Layout: gleich hohe Cards */
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Linke Spalte: Paket-Vorschau */
+.package-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  height: 100%;
+  min-height: 0;
+  padding: 1rem 1.1rem;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.package-preview-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.package-preview-intro {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.package-preview-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 0.35rem;
+  padding-right: 0.4rem;
+
+  overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Formular-Card rechts */
+.contact-form-card {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+/* Formular */
+.contact-form {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0.1rem;
+}
+
+/* Reihen für zweispaltige Felder */
+.contact-form .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Einzelne Felder */
+.contact-form .form-field {
+  flex: 1 1 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+/* Labels */
+.contact-form label {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Inputs, Textareas, Selects */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+
+  background: var(--bg-input, rgba(5, 5, 5, 0.9));
+  border: 1px solid var(--stroke, rgba(255, 255, 255, 0.18));
+  border-radius: 8px;
+
+  color: inherit;
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  transition:
+    border-color 0.18s ease,
+    outline-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Speziell die Einzel-Felder unter der ersten Zeile enger zusammenrücken */
+.contact-form .form-field-subject,
+.contact-form .form-field-package,
+.contact-form .form-field-message {
+  margin-top: -0.1rem;
+}
+
+/* Fokus */
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: 2px solid var(--primary-2, #4f46e5);
+  outline-offset: 1px;
+  border-color: var(--primary-2, #4f46e5);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+  background-color: rgba(10, 10, 10, 0.95);
+}
+
+/* Hover */
+.contact-form input:hover,
+.contact-form textarea:hover,
+.contact-form select:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Textarea */
+.contact-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* Select mit Pfeil */
+.contact-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding-right: 2.2rem;
+  cursor: pointer;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #ffffff 50%),
+    linear-gradient(135deg, #ffffff 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.1rem) 50%,
+    calc(100% - 0.6rem) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* Honeypot-Feld verstecken */
+.form-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Button-Bereich */
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Statusmeldungen */
+.form-status {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Fehlerzustand */
+.contact-form .has-error input,
+.contact-form .has-error textarea,
+.contact-form .has-error select {
+  border-color: #f97373;
+}
+
+.contact-form .error-message {
+  font-size: 0.8rem;
+  color: #f97373;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .partner-card,
+  .partner-card.featured,
+  .partner-grid.three-col .partner-card {
+    grid-column: span 12;
+  }
+
+  .partner-card.featured {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-media,
+  .partner-media-ig,
+  .partner-media-brand {
+    border-right: none;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  .partner-media-ig,
+  .partner-media-brand {
+    min-height: 260px;
+  }
+
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .package-preview,
+  .contact-form-card {
+    height: auto;
+  }
+
+  .package-preview-body {
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-form .form-row {
+    flex-direction: column;
+  }
+
+  .contact-form .form-field {
+    flex-basis: 100%;
+  }
+}
+
+/* Mobile Extras */
+@media (max-width: 560px) {
+  .partner-card.empty {
+    min-height: 180px;
+  }
+
+  .partner-content {
+    padding: 16px;
+  }
+
+  .partner-content h3 {
+    font-size: 20px;
+  }
+
+  .partner-links {
+    flex-direction: column;
+  }
+
+  .partner-links .btn {
+    width: 100%;
+  }
+
+  .partner-media,
+  .partner-media-ig,
+  .partner-media-brand {
+    padding: 16px;
+  }
+
+  .partner-media-ig,
+  .partner-media-brand {
+    min-height: 220px;
+  }
+
+  .ig-banner {
+    max-width: 190px;
+  }
+
+  .partner-brand-image {
+    max-width: 180px;
+  }
+}

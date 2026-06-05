@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("hkl-theme");
+        const safeTheme = theme === "light" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", safeTheme);
+        document.documentElement.style.colorScheme = safeTheme;
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.style.colorScheme = "dark";
+      }
+    })();
+  </script>
+  <title>Datenschutz | hundekuchenlive</title>
+  <meta name="description"
+    content="Datenschutzerklärung von hundekuchenlive – Informationen zur Verarbeitung personenbezogener Daten auf Website, Discord-Server und Discord-Bot.">
+
+  <link rel="canonical" href="https://hundekuchenlive.de/datenschutz/">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Datenschutz | hundekuchenlive">
+  <meta property="og:description"
+    content="Informationen zur Verarbeitung personenbezogener Daten auf der Website, dem Discord-Server und durch den Discord-Bot von hundekuchenlive.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hundekuchenlive.de/datenschutz/">
+  <meta property="og:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <!-- Twitter / Discord Vorschau -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Datenschutz | hundekuchenlive">
+  <meta name="twitter:description"
+    content="Informationen zur Verarbeitung personenbezogener Daten auf der Website, dem Discord-Server und durch den Discord-Bot von hundekuchenlive.">
+  <meta name="twitter:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/legal.css">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon.png">
+</head>
+
+<body>
+
+  <header id="site-header" role="banner"></header>
+
+  <main class="container section legal-page">
+
+    <section class="section">
+      <div class="panel legal-hero">
+        <h1>Datenschutzerklärung</h1>
+        <p class="sub">
+          Informationen zur Verarbeitung personenbezogener Daten auf dieser Website,
+          dem Discord-Server und durch den Discord-Bot von hundekuchenlive.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel legal-card legal-toc">
+        <h2>Inhaltsübersicht</h2>
+        <ul>
+          <li><a href="#verantwortlicher">1. Verantwortlicher</a></li>
+          <li><a href="#allgemeines">2. Allgemeine Hinweise zur Datenverarbeitung</a></li>
+          <li><a href="#rechtsgrundlagen">3. Rechtsgrundlagen</a></li>
+          <li><a href="#hosting">4. Hosting der Website und Server-Logfiles</a></li>
+          <li><a href="#cookies">5. Cookies, LocalStorage und Consent-Verwaltung</a></li>
+          <li><a href="#kontakt">6. Kontaktaufnahme</a></li>
+          <li><a href="#externe-links">7. Externe Links</a></li>
+          <li><a href="#discord-server">8. Discord-Server</a></li>
+          <li><a href="#discord-bot">9. Discord-Bot</a></li>
+          <li><a href="#bot-hosting">10. Hosting des Discord-Bots über Hetzner VPS</a></li>
+          <li><a href="#twitch">11. Twitch und eingebettete Inhalte</a></li>
+          <li><a href="#affiliate">12. Affiliate-Links und Partnerangebote</a></li>
+          <li><a href="#empfaenger">13. Empfänger von Daten</a></li>
+          <li><a href="#speicherdauer">14. Speicherdauer</a></li>
+          <li><a href="#rechte">15. Rechte betroffener Personen</a></li>
+          <li><a href="#widerruf">16. Widerruf und Widerspruch</a></li>
+          <li><a href="#beschwerde">17. Beschwerderecht</a></li>
+          <li><a href="#bereitstellung">18. Pflicht zur Bereitstellung von Daten</a></li>
+          <li><a href="#automatisierung">19. Automatisierte Entscheidungsfindung</a></li>
+          <li><a href="#stand">20. Stand</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="legal-stack">
+
+        <div class="panel legal-card" id="verantwortlicher">
+          <h2>1. Verantwortlicher</h2>
+          <p>
+            Verantwortlich für die Verarbeitung personenbezogener Daten im Rahmen dieser Website,
+            des Discord-Servers und des von hundekuchenlive betriebenen Discord-Bots ist:
+          </p>
+          <p>
+            Justin Barth<br>
+            Online-Auftritt: hundekuchenlive<br>
+            Ladungsfähige Anschrift: siehe <a href="/impressum/">Impressum</a>
+          </p>
+          <p style="margin-bottom:0;">
+            Datenschutzkontakt:<br>
+            <a href="mailto:privacy@hundekuchenlive.de">privacy@hundekuchenlive.de</a>
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="allgemeines">
+          <h2>2. Allgemeine Hinweise zur Datenverarbeitung</h2>
+          <p>
+            Beim Besuch dieser Website, bei der Nutzung des Discord-Servers oder bei der Interaktion mit dem
+            Discord-Bot können personenbezogene Daten verarbeitet werden.
+            Personenbezogene Daten sind Informationen, die sich auf eine identifizierte oder identifizierbare
+            natürliche Person beziehen, zum Beispiel IP-Adressen, Discord-User-IDs, Rolleninformationen,
+            Kontaktangaben oder technische Zugriffsdaten.
+          </p>
+          <p>
+            Die Verarbeitung erfolgt nur, soweit dies für den Betrieb der Website, die Bereitstellung von Funktionen,
+            die Kommunikation mit Nutzern, die Sicherheit der Website, den Community-Betrieb, die Moderation,
+            die Rollenverwaltung oder die Nutzung von Bot-Commands erforderlich ist oder eine Einwilligung vorliegt.
+          </p>
+          <p style="margin-bottom:0;">
+            Diese Datenschutzerklärung informiert darüber, welche Daten verarbeitet werden,
+            zu welchen Zwecken dies geschieht und welche Rechte betroffene Personen haben.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="rechtsgrundlagen">
+          <h2>3. Rechtsgrundlagen</h2>
+          <p>
+            Die Verarbeitung personenbezogener Daten erfolgt insbesondere auf Grundlage folgender Vorschriften:
+          </p>
+          <ul>
+            <li>
+              <strong>Art. 6 Abs. 1 lit. a DSGVO</strong> – Einwilligung, zum Beispiel für bestimmte externe Inhalte,
+              Partnerdienste oder einwilligungspflichtige Speicherungen.
+            </li>
+            <li>
+              <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> – Vertragserfüllung oder vorvertragliche Maßnahmen,
+              zum Beispiel bei konkreten Anfragen oder aktiv angeforderten Funktionen.
+            </li>
+            <li>
+              <strong>Art. 6 Abs. 1 lit. c DSGVO</strong> – rechtliche Verpflichtungen, soweit gesetzliche Pflichten
+              bestehen.
+            </li>
+            <li>
+              <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> – berechtigte Interessen, insbesondere am sicheren,
+              stabilen und nutzerfreundlichen Betrieb dieser Website, am Betrieb der Community, an Moderation,
+              Missbrauchsprävention, Rollenverwaltung und technischer Bereitstellung des Discord-Bots.
+            </li>
+            <li>
+              <strong>§ 25 TDDDG</strong> – Speicherung von Informationen auf Endgeräten oder Zugriff auf bereits
+              gespeicherte Informationen, zum Beispiel Cookies oder lokale Speicherfunktionen des Browsers.
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel legal-card" id="hosting">
+          <h2>4. Hosting der Website und Server-Logfiles</h2>
+
+          <p>
+            Diese Website wird bei der IONOS SE gehostet.
+          </p>
+
+          <p>
+            <strong>IONOS SE</strong><br>
+            Elgendorfer Str. 57<br>
+            56410 Montabaur<br>
+            Deutschland
+          </p>
+
+          <p>
+            Beim Aufruf dieser Website verarbeitet der Hosting-Anbieter IONOS SE technische Besucherdaten.
+            Nach Angaben von IONOS werden dabei insbesondere folgende Daten erhoben und direkt bei der Erhebung
+            anonymisiert:
+          </p>
+
+          <ul>
+            <li>Referrer, also die zuvor besuchte Webseite</li>
+            <li>angeforderte Webseite oder Datei</li>
+            <li>Browsertyp und Browserversion</li>
+            <li>verwendetes Betriebssystem</li>
+            <li>verwendeter Gerätetyp</li>
+            <li>Uhrzeit des Zugriffs</li>
+            <li>IP-Adresse in anonymisierter Form</li>
+          </ul>
+
+          <p>
+            Die Verarbeitung erfolgt nach Angaben von IONOS, um die Sicherheit und Stabilität des Angebots zu
+            gewährleisten und Webseitenbesuchern ein hohes Maß an Qualität bereitstellen zu können.
+          </p>
+
+          <p>
+            Nach Angaben von IONOS werden die Besucherdaten für 8 Wochen gespeichert.
+            Eigene, lokal im Webspace sichtbare Logdateien werden vom Betreiber dieser Website derzeit nicht geführt.
+          </p>
+
+          <p>
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO.
+            Das berechtigte Interesse liegt im sicheren und zuverlässigen Betrieb dieser Website.
+          </p>
+
+          <p>
+            <strong>Empfänger:</strong> Hosting-Anbieter IONOS SE.
+          </p>
+
+          <p>
+            Nach Angaben von IONOS werden Besucherdaten im Rahmen des Webhostings nicht an Dritte weitergegeben
+            und es findet kein Transfer von Besucherdaten in Drittstaaten außerhalb der EU statt.
+          </p>
+
+          <p style="margin-bottom:0;">
+            <strong>Auftragsverarbeitung:</strong> Für neue IONOS-Verträge ab dem 19.07.2022 ist die Vereinbarung
+            zur Auftragsverarbeitung nach Angaben von IONOS Bestandteil der IONOS-AGB.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="cookies">
+          <h2>5. Cookies, LocalStorage und Consent-Verwaltung</h2>
+
+          <p>
+            Diese Website kann technisch notwendige Cookies oder lokale Speicherfunktionen des Browsers verwenden.
+            Technisch notwendige Speicherungen dienen dem sicheren und ordnungsgemäßen Betrieb der Website
+            oder der Bereitstellung ausdrücklich gewünschter Funktionen.
+          </p>
+
+          <p>
+            Für bestimmte externe Inhalte, Partnerangebote, Affiliate-Banner oder vergleichbare
+            Drittanbieter-Technologien
+            kann vor dem Laden eine Einwilligung erforderlich sein. Ohne Einwilligung werden solche Inhalte nicht
+            geladen.
+          </p>
+
+          <p>
+            Die Entscheidung zur Einwilligung kann technisch gespeichert werden, damit die Auswahl beim weiteren Besuch
+            der Website berücksichtigt werden kann. Je nach technischer Umsetzung kann dies über Cookies oder lokale
+            Speicherfunktionen des Browsers erfolgen.
+          </p>
+
+          <p style="margin-bottom:0;">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO für einwilligungspflichtige Dienste
+            sowie § 25 Abs. 1 TDDDG für das Speichern oder Auslesen von Informationen auf dem Endgerät.
+            Technisch notwendige Speicherungen erfolgen auf Grundlage von § 25 Abs. 2 TDDDG.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="kontakt">
+          <h2>6. Kontaktaufnahme</h2>
+
+          <p>
+            Wenn du per E-Mail oder über ein Kontaktformular Kontakt aufnimmst, werden die übermittelten Daten zur
+            Bearbeitung der Anfrage verarbeitet. Dazu können insbesondere Name, E-Mail-Adresse, Nachrichtentext,
+            Zeitpunkt der Anfrage und technische Metadaten gehören.
+          </p>
+
+          <p>
+            Die Daten werden ausschließlich zur Bearbeitung der jeweiligen Anfrage und für mögliche Anschlussfragen
+            verwendet.
+          </p>
+
+          <p>
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO, soweit die Anfrage auf einen Vertrag oder
+            vorvertragliche Maßnahmen gerichtet ist. In allen anderen Fällen erfolgt die Verarbeitung auf Grundlage von
+            Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse liegt in der Bearbeitung eingehender Anfragen.
+          </p>
+
+          <p style="margin-bottom:0;">
+            <strong>Speicherdauer:</strong> Kontaktanfragen werden gelöscht, sobald sie für die Bearbeitung nicht mehr
+            erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="externe-links">
+          <h2>7. Externe Links</h2>
+
+          <p>
+            Diese Website enthält Links zu externen Websites, Plattformen und Diensten Dritter, zum Beispiel Twitch,
+            TikTok, YouTube, Discord, Partnerseiten oder Affiliate-Angebote.
+          </p>
+
+          <p>
+            Beim Anklicken eines externen Links verlässt du diese Website. Für die Verarbeitung personenbezogener Daten
+            auf den verlinkten Seiten ist der jeweilige Anbieter verantwortlich.
+          </p>
+
+          <p style="margin-bottom:0;">
+            Vor dem Anklicken eines externen Links findet durch den bloßen Link grundsätzlich keine Datenübermittlung an
+            den jeweiligen Anbieter statt. Eine Datenübermittlung erfolgt erst, wenn der Link aktiv aufgerufen wird oder
+            externe Inhalte auf der Website geladen werden.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="discord-server">
+          <h2>8. Discord-Server</h2>
+
+          <p>
+            Der Discord-Server von hundekuchenlive dient dem Aufbau und Betrieb einer Community.
+            Nutzer können dort miteinander kommunizieren, an Community-Aktionen teilnehmen, Informationen erhalten
+            und je nach Serverkonfiguration Rollen oder serverbezogene Funktionen nutzen.
+          </p>
+
+          <p>
+            Beim Beitritt und bei der Nutzung des Discord-Servers werden personenbezogene Daten auch durch Discord
+            selbst verarbeitet. Dazu können insbesondere Discord-Accountdaten, User-ID, Benutzername, Avatar,
+            Nachrichteninhalte, Servermitgliedschaften, Rollen, technische Daten und Nutzungsdaten gehören.
+            Für die Verarbeitung durch Discord gelten zusätzlich die Datenschutzbestimmungen von Discord.
+          </p>
+
+          <p>
+            Im Rahmen des Community-Betriebs können durch den Betreiber des Servers insbesondere folgende Daten
+            sichtbar oder verarbeitet werden:
+          </p>
+
+          <ul>
+            <li>Discord-User-ID</li>
+            <li>Discord-Benutzername und Server-Anzeigename</li>
+            <li>Servermitgliedschaft</li>
+            <li>zugewiesene Rollen</li>
+            <li>öffentlich im Server geteilte Nachrichten und Inhalte</li>
+            <li>Moderations- und Aktivitätsinformationen, soweit sie für den Serverbetrieb erforderlich sind</li>
+          </ul>
+
+          <p>
+            <strong>Zwecke der Verarbeitung:</strong> Community-Betrieb, Kommunikation, Moderation,
+            Rollenverwaltung, Missbrauchsprävention, Durchsetzung von Serverregeln und Organisation von
+            Community-Aktionen.
+          </p>
+
+          <p>
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO.
+            Das berechtigte Interesse liegt im sicheren, geordneten und funktionsfähigen Betrieb der Community.
+          </p>
+
+          <p style="margin-bottom:0;">
+            Weitere Informationen zur Datenverarbeitung durch Discord findest du in der Datenschutzerklärung von
+            Discord:
+            <a href="https://discord.com/privacy" target="_blank" rel="noopener noreferrer">
+              https://discord.com/privacy
+            </a>
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="discord-bot">
+          <h2>9. Discord-Bot</h2>
+
+          <p>
+            Auf dem Discord-Server wird ein von Justin Barth / hundekuchenlive betriebener Discord-Bot eingesetzt.
+            Der Bot wird selbst verwaltet und dient insbesondere der Serverorganisation, Aktivitätserfassung,
+            Rollenverwaltung, Protokollierung bestimmter Serverereignisse und Bereitstellung von Commands.
+          </p>
+
+          <p>
+            Der Discord-Bot kann je nach Nutzung und Serverereignis insbesondere folgende Daten verarbeiten:
+          </p>
+
+          <ul>
+            <li>Discord-User-ID</li>
+            <li>Discord-Benutzername und Server-Anzeigename</li>
+            <li>Server-ID und Channel-ID</li>
+            <li>Rolleninformationen und Rollenänderungen</li>
+            <li>verwendete Commands und Command-Zeitpunkt</li>
+            <li>serverbezogene Aktivitätsdaten</li>
+            <li>Moderations- und Logdaten, soweit sie für den Community-Betrieb erforderlich sind</li>
+          </ul>
+
+          <p>
+            Die Erfassung der Serveraktivität und das Logging finden ausschließlich innerhalb von Discord statt.
+            Die Logdaten dienen dazu, Serveraktivität nachvollziehen, Rollen verwalten, Commands bereitstellen,
+            Missbrauch erkennen und die Community sicher betreiben zu können.
+          </p>
+
+          <p>
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO.
+            Das berechtigte Interesse liegt im sicheren und geordneten Betrieb des Discord-Servers,
+            in der Rollenverwaltung, in der Missbrauchsprävention, in der technischen Bereitstellung von Bot-Funktionen
+            und in der Organisation der Community.
+            Soweit Nutzer Commands aktiv verwenden, kann die Verarbeitung zusätzlich auf Art. 6 Abs. 1 lit. b DSGVO
+            gestützt werden, da die gewünschte Bot-Funktion auf Anfrage des Nutzers bereitgestellt wird.
+          </p>
+
+          <p>
+            <strong>Speicherdauer:</strong> Discord-Logdaten des Bots werden nach 30 Tagen gelöscht.
+            Daten, die nur zur unmittelbaren Ausführung eines Commands erforderlich sind, werden grundsätzlich nur
+            verarbeitet, solange dies zur Bereitstellung der jeweiligen Funktion erforderlich ist, sofern keine längere
+            Speicherung aus Sicherheits-, Moderations- oder Nachweisgründen notwendig ist.
+          </p>
+
+          <p style="margin-bottom:0;">
+            Anfragen zur Auskunft oder Löschung von durch den Bot verarbeiteten Daten können an
+            <a href="mailto:privacy@hundekuchenlive.de">privacy@hundekuchenlive.de</a>
+            gerichtet werden.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="bot-hosting">
+          <h2>10. Hosting des Discord-Bots über Hetzner VPS</h2>
+
+          <p>
+            Der Discord-Bot wird auf einem VPS bei Hetzner gehostet und durch den Betreiber dieser Website selbst
+            gewartet.
+          </p>
+
+          <p>
+            <strong>Hetzner Online GmbH</strong><br>
+            Industriestr. 25<br>
+            91710 Gunzenhausen<br>
+            Deutschland
+          </p>
+
+          <p>
+            Im Rahmen des VPS-Betriebs können technische Daten verarbeitet werden, die für den Betrieb des Servers,
+            die Sicherheit, Wartung, Fehleranalyse und die Bereitstellung des Discord-Bots erforderlich sind.
+            Dazu können insbesondere technische Verbindungsdaten, Serverlogs, Sicherheitsereignisse oder systembezogene
+            Betriebsdaten gehören.
+          </p>
+
+          <p>
+            <strong>Zweck der Verarbeitung:</strong> Bereitstellung, Betrieb, Wartung und Absicherung des Discord-Bots.
+          </p>
+
+          <p>
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO.
+            Das berechtigte Interesse liegt im zuverlässigen und sicheren Betrieb des Discord-Bots.
+          </p>
+
+          <p>
+            <strong>Empfänger:</strong> Hetzner Online GmbH als Infrastruktur- und Hosting-Anbieter.
+          </p>
+
+          <p style="margin-bottom:0;">
+            <strong>Auftragsverarbeitung:</strong> Soweit Hetzner personenbezogene Daten im Auftrag verarbeitet,
+            erfolgt dies auf Grundlage einer Vereinbarung zur Auftragsverarbeitung gemäß Art. 28 DSGVO.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="twitch">
+          <h2>11. Twitch und eingebettete Inhalte</h2>
+
+          <p>
+            Auf dieser Website können Inhalte von Twitch eingebunden oder verlinkt werden.
+            Anbieter ist Twitch Interactive, Inc., 350 Bush Street, San Francisco, CA 94104, USA.
+          </p>
+
+          <p>
+            Eingebettete Twitch-Inhalte werden nur geladen, wenn dies technisch vorgesehen ist und eine erforderliche
+            Einwilligung erteilt wurde. Beim Laden externer Inhalte können personenbezogene Daten wie IP-Adresse,
+            Browserinformationen, Geräteinformationen und Nutzungsdaten an den jeweiligen Anbieter übertragen werden.
+          </p>
+
+          <p>
+            Es kann zu einer Übermittlung personenbezogener Daten in die USA kommen. Für diese Datenverarbeitung ist
+            nach dem Laden externer Inhalte grundsätzlich auch der jeweilige Drittanbieter verantwortlich.
+          </p>
+
+          <p>
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO, sofern die Einbindung auf Grundlage einer
+            Einwilligung erfolgt.
+          </p>
+
+          <p style="margin-bottom:0;">
+            Weitere Informationen findest du in der Datenschutzerklärung von Twitch:
+            <a href="https://www.twitch.tv/p/de-de/legal/privacy-notice/" target="_blank" rel="noopener noreferrer">
+              https://www.twitch.tv/p/de-de/legal/privacy-notice/
+            </a>
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="affiliate">
+          <h2>12. Affiliate-Links und Partnerangebote</h2>
+
+          <p>
+            Diese Website enthält Affiliate-Links und Partnerverweise, unter anderem zu Instant Gaming sowie weiteren
+            Kooperationspartnern. Wenn du über einen solchen Link einen Kauf tätigst oder eine Partnerseite besuchst,
+            kann der Betreiber dieser Website eine Provision oder sonstige Vergütung erhalten.
+            Für dich entstehen dadurch keine zusätzlichen Kosten.
+          </p>
+
+          <p>
+            Beim Anklicken eines Affiliate-Links kann der jeweilige Anbieter nachvollziehen, dass du über diese Website
+            weitergeleitet wurdest. Dabei können technische Daten wie IP-Adresse, Browserinformationen,
+            Geräteinformationen, Referrer-URL sowie Affiliate- oder Tracking-Parameter verarbeitet werden.
+          </p>
+
+          <p>
+            Soweit Affiliate-Banner, Tracking-Pixel, JavaScript-Code oder vergleichbare Technologien von Partnern
+            eingebunden werden, erfolgt dies nur nach vorheriger Einwilligung, soweit eine solche Einwilligung
+            erforderlich ist. Vor Erteilung der Einwilligung werden entsprechende Inhalte nicht geladen.
+          </p>
+
+          <p>
+            <strong>Zweck:</strong> Zuordnung von Käufen, Provisionsabrechnung, Darstellung von Partnerangeboten und
+            Nachweis von Vermittlungen.
+          </p>
+
+          <p style="margin-bottom:0;">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO bei einwilligungspflichtigem Tracking.
+            Bei einfachen Affiliate-Links ohne einwilligungspflichtige Speicher- oder Trackingtechnologien erfolgt die
+            Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse liegt in der
+            Refinanzierung und wirtschaftlichen Unterstützung des Online-Angebots.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="empfaenger">
+          <h2>13. Empfänger von Daten</h2>
+
+          <p>
+            Personenbezogene Daten können je nach Nutzung der Website, des Discord-Servers oder des Discord-Bots an
+            folgende Kategorien von Empfängern übermittelt oder für diese sichtbar werden:
+          </p>
+
+          <ul>
+            <li>Hosting-Anbieter der Website, insbesondere IONOS SE</li>
+            <li>Hosting-Anbieter des Discord-Bots, insbesondere Hetzner Online GmbH</li>
+            <li>Discord als Plattformanbieter</li>
+            <li>Servermoderation und berechtigte Administratoren des Discord-Servers</li>
+            <li>E-Mail- und Kommunikationsdienste, soweit du Kontakt aufnimmst</li>
+            <li>externe Plattformen, wenn du externe Links öffnest</li>
+            <li>Drittanbieter eingebetteter Inhalte, sofern du dem Laden dieser Inhalte zustimmst</li>
+            <li>Affiliate- und Kooperationspartner, wenn du entsprechende Links oder Inhalte nutzt</li>
+          </ul>
+
+          <p style="margin-bottom:0;">
+            Eine Weitergabe personenbezogener Daten erfolgt nur, soweit dies für die genannten Zwecke erforderlich ist,
+            eine Rechtsgrundlage besteht oder eine Einwilligung vorliegt.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="speicherdauer">
+          <h2>14. Speicherdauer</h2>
+
+          <p>
+            Personenbezogene Daten werden nur so lange gespeichert, wie dies für die jeweiligen Zwecke erforderlich ist
+            oder gesetzliche Aufbewahrungspflichten bestehen.
+          </p>
+
+          <p>
+            Technische Besucherdaten im Rahmen des IONOS-Webhostings werden nach Angaben von IONOS direkt bei der
+            Erhebung anonymisiert und für 8 Wochen gespeichert. Eigene, lokal im Webspace sichtbare Logdateien werden
+            vom Betreiber dieser Website derzeit nicht geführt.
+          </p>
+
+          <p>
+            Discord-Logdaten, die durch den Discord-Bot im Rahmen des Serverbetriebs erzeugt werden, werden nach
+            30 Tagen gelöscht. Das Logging findet ausschließlich innerhalb von Discord statt.
+          </p>
+
+          <p>
+            Daten, die nur zur unmittelbaren Ausführung eines Discord-Bot-Commands erforderlich sind, werden
+            grundsätzlich nur für die Dauer der Funktionsbereitstellung verarbeitet, sofern keine längere Speicherung
+            für Sicherheit, Moderation oder Nachvollziehbarkeit erforderlich ist.
+          </p>
+
+          <p>
+            Daten aus Kontaktanfragen werden gelöscht, sobald die Anfrage abschließend bearbeitet wurde und keine
+            gesetzlichen Aufbewahrungspflichten oder berechtigten Interessen an einer weiteren Speicherung bestehen.
+          </p>
+
+          <p style="margin-bottom:0;">
+            Einwilligungsdaten werden gespeichert, solange sie für den Nachweis oder die Berücksichtigung deiner Auswahl
+            erforderlich sind oder bis du deine Einwilligung widerrufst beziehungsweise die gespeicherte Auswahl
+            löschst.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="rechte">
+          <h2>15. Rechte betroffener Personen</h2>
+
+          <p>
+            Betroffene Personen haben nach Maßgabe der DSGVO insbesondere folgende Rechte:
+          </p>
+
+          <ul>
+            <li>Recht auf Auskunft über die verarbeiteten personenbezogenen Daten</li>
+            <li>Recht auf Berichtigung unrichtiger Daten</li>
+            <li>Recht auf Löschung personenbezogener Daten</li>
+            <li>Recht auf Einschränkung der Verarbeitung</li>
+            <li>Recht auf Datenübertragbarkeit</li>
+            <li>Recht auf Widerspruch gegen bestimmte Verarbeitungen</li>
+            <li>Recht auf Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft</li>
+            <li>Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde</li>
+          </ul>
+
+          <p style="margin-bottom:0;">
+            Zur Ausübung dieser Rechte kannst du dich an
+            <a href="mailto:privacy@hundekuchenlive.de">privacy@hundekuchenlive.de</a>
+            wenden.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="widerruf">
+          <h2>16. Widerruf und Widerspruch</h2>
+
+          <p>
+            Wenn die Verarbeitung auf einer Einwilligung beruht, kannst du diese Einwilligung jederzeit mit Wirkung für
+            die Zukunft widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt.
+          </p>
+
+          <p>
+            Wenn personenbezogene Daten auf Grundlage berechtigter Interessen verarbeitet werden, kannst du aus Gründen,
+            die sich aus deiner besonderen Situation ergeben, Widerspruch gegen diese Verarbeitung einlegen.
+          </p>
+
+          <p style="margin-bottom:0;">
+            Einen Widerruf oder Widerspruch kannst du an
+            <a href="mailto:privacy@hundekuchenlive.de">privacy@hundekuchenlive.de</a>
+            senden.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="beschwerde">
+          <h2>17. Beschwerderecht</h2>
+
+          <p>
+            Wenn du der Ansicht bist, dass die Verarbeitung personenbezogener Daten gegen Datenschutzrecht verstößt,
+            hast du das Recht, dich bei einer Datenschutzaufsichtsbehörde zu beschweren.
+          </p>
+
+          <p>
+            Bei einem Sitz in Thüringen ist regelmäßig folgende Aufsichtsbehörde zuständig:
+          </p>
+
+          <p style="margin-bottom:0;">
+            Thüringer Landesbeauftragter für den Datenschutz und die Informationsfreiheit<br>
+            Häßlerstraße 8<br>
+            99096 Erfurt<br>
+            Telefon: 0361 57-31129 00<br>
+            E-Mail: <a href="mailto:poststelle@datenschutz.thueringen.de">poststelle@datenschutz.thueringen.de</a><br>
+            Website:
+            <a href="https://www.tlfdi.de" target="_blank" rel="noopener noreferrer">
+              https://www.tlfdi.de
+            </a>
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="bereitstellung">
+          <h2>18. Pflicht zur Bereitstellung von Daten</h2>
+
+          <p>
+            Die Bereitstellung personenbezogener Daten ist grundsätzlich weder gesetzlich noch vertraglich
+            vorgeschrieben.
+            Für den rein informatorischen Besuch der Website ist es jedoch technisch erforderlich, bestimmte
+            Zugriffsdaten
+            wie die IP-Adresse zu verarbeiten, damit die Website ausgeliefert werden kann.
+          </p>
+
+          <p>
+            Für die Nutzung des Discord-Servers ist ein Discord-Konto erforderlich. Die hierfür erforderlichen Daten
+            werden durch Discord verarbeitet. Ohne Discord-Konto kann der Discord-Server nicht genutzt werden.
+          </p>
+
+          <p>
+            Für die Nutzung bestimmter Bot-Funktionen ist es technisch erforderlich, dass der Bot bestimmte
+            Discord-Daten wie User-ID, Rolleninformationen oder Command-Eingaben verarbeitet. Ohne diese Verarbeitung
+            können einzelne Bot-Funktionen nicht oder nur eingeschränkt bereitgestellt werden.
+          </p>
+
+          <p style="margin-bottom:0;">
+            Bei Kontaktanfragen sind die für die Bearbeitung erforderlichen Angaben notwendig. Ohne diese Daten kann die
+            Anfrage möglicherweise nicht oder nur eingeschränkt beantwortet werden.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="automatisierung">
+          <h2>19. Automatisierte Entscheidungsfindung</h2>
+
+          <p style="margin-bottom:0;">
+            Eine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO findet durch
+            diese Website und den Discord-Bot nicht statt.
+          </p>
+        </div>
+
+        <div class="panel legal-card" id="stand">
+          <h2>20. Stand</h2>
+          <p style="margin-bottom:0;">April 2026</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer" role="contentinfo"></footer>
+  <script src="/assets/js/layout.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+/* Streamingplan */
+.schedule-board {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px var(--shadow);
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.schedule-cover {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  height: 96px;
+  object-fit: cover;
+  width: 72px;
+}
+
+.schedule-day {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.schedule-event strong {
+  color: var(--text);
+  display: block;
+  margin-top: 4px;
+}
+
+.schedule-event-main {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+}
+
+.schedule-game {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  padding: 5px 10px;
+}
+
+.schedule-head {
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+}
+
+.schedule-head,
+.schedule-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+}
+
+.schedule-head-cell,
+.schedule-day,
+.schedule-event,
+.schedule-time {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px;
+}
+
+.schedule-row:last-child .schedule-day,
+.schedule-row:last-child .schedule-event,
+.schedule-row:last-child .schedule-time {
+  border-bottom: none;
+}
+
+.schedule-time {
+  color: var(--primary-2);
+  font-weight: 700;
+}
+
+.stream-day-badge {
+  background: rgba(74, 163, 255, 0.14);
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  color: var(--primary-2);
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+}
+
+.stream-day-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px var(--shadow);
+  padding: 20px;
+}
+
+.stream-day-card h3 {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.stream-day-card p {
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.stream-days {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 12px;
+}
+
+/* Streamingplan / Community */
+.community-badge {
+  background: rgba(74, 163, 255, 0.14);
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  color: var(--primary-2);
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+}
+
+.community-content h2 {
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.1;
+  margin: 10px 0 12px;
+}
+
+.community-content p {
+  color: var(--muted);
+}
+
+.community-grid {
+  align-items: center;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr 0.95fr;
+}
+
+.community-image {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px var(--shadow);
+  height: auto;
+  max-width: 420px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.community-media {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.community-panel {
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px var(--shadow);
+  padding: 22px;
+}
+
+@media (max-width: 900px) {
+  .community-grid,
+  .stream-days {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-cover {
+    height: 86px;
+    width: 64px;
+  }
+
+  .schedule-day,
+  .schedule-event,
+  .schedule-time {
+    border-bottom: none;
+  }
+
+  .schedule-event-main {
+    align-items: flex-start;
+  }
+
+  .schedule-head {
+    display: none;
+  }
+
+  .schedule-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-time {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .community-content h2 {
+    font-size: clamp(24px, 8vw, 30px);
+  }
+
+  .community-panel {
+    padding: 16px;
+  }
+
+  .schedule-cover {
+    height: 76px;
+    width: 56px;
+  }
+
+  .schedule-day,
+  .schedule-event,
+  .schedule-time {
+    padding: 14px;
+  }
+
+  .stream-day-card {
+    padding: 16px;
+  }
+}

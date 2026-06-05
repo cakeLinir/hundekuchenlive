@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("hkl-theme");
+        const safeTheme = theme === "light" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", safeTheme);
+        document.documentElement.style.colorScheme = safeTheme;
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.style.colorScheme = "dark";
+      }
+    })();
+  </script>
+  <title>Streamingplan | hundekuchenlive</title>
+  <meta name="description"
+    content="Streams, Gaming und Community rund um hundekuchenlive. GTA RP, Valorant, Satisfactory und mehr.">
+
+  <link rel="canonical" href="https://hundekuchenlive.de/streamingplan/">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Streamingplan | hundekuchenlive">
+  <meta property="og:description" content="Gaming Streams, Community und Projekte.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hundekuchenlive.de/streamingplan/">
+  <meta property="og:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <!-- Twitter / Discord Vorschau -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Streamingplan | hundekuchenlive">
+  <meta name="twitter:description"
+    content="Feste Streamtage, aktuelle Wochenübersicht und Hinweise zu spontanen Zusatzstreams bei hundekuchenlive.">
+  <meta name="twitter:image" content="https://hundekuchenlive.de/assets/img/og-image.jpg">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/streamingplan.css">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "hundekuchenlive",
+    "alternateName": "Justin",
+    "url": "https://hundekuchenlive.de",
+    "image": "https://hundekuchenlive.de/assets/img/og-image.jpg",
+    "sameAs": [
+      "https://www.twitch.tv/hundekuchenlive",
+      "https://www.tiktok.com/@hundekuchenlive",
+      "https://discord.gg/WfTbuyhXcJ"
+    ],
+    "description": "Gaming Streams, Community und Projekte rund um hundekuchenlive. GTA RP, Valorant und Satisfactory."
+  }
+  </script>
+</head>
+
+<body>
+
+  <header id="site-header" role="banner"></header>
+
+  <main class="container section">
+
+    <section class="section">
+      <div class="panel">
+        <h1>Streamingplan</h1>
+        <p class="sub">
+          Hier findest du meine festen Streamtage sowie zusätzliche Hinweise zu spontanen Streams und wechselnden
+          Inhalten.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Wochenübersicht</h2>
+      <p class="sub">Kalenderähnliche Übersicht der aktuellen Hauptstreams.</p>
+
+      <div class="schedule-board">
+        <div class="schedule-head">
+          <div class="schedule-head-cell">Tag</div>
+          <div class="schedule-head-cell">Geplanter Stream</div>
+          <div class="schedule-head-cell">Uhrzeit</div>
+        </div>
+
+        <div class="schedule-row">
+          <div class="schedule-day">Dienstag</div>
+          <div class="schedule-event">
+            <div class="schedule-event-main">
+              <div>
+                <span class="schedule-game">Satisfactory</span>
+                <strong>Satisfactory Day</strong>
+              </div>
+            </div>
+          </div>
+          <div class="schedule-time">20:00 – 22:00</div>
+        </div>
+
+        <div class="schedule-row">
+          <div class="schedule-day">Donnerstag</div>
+          <div class="schedule-event">
+            <div class="schedule-event-main">
+              <div>
+                <span class="schedule-game">Valorant</span>
+                <strong>Valorant Day | Wir grinden rein!</strong>
+              </div>
+            </div>
+          </div>
+          <div class="schedule-time">20:00 – 22:00</div>
+        </div>
+
+        <div class="schedule-row">
+          <div class="schedule-day">Samstag</div>
+          <div class="schedule-event">
+            <div class="schedule-event-main">
+              <div>
+                <span class="schedule-game">Grand Theft Auto V</span>
+                <strong>[HomeState] Wir lassen uns alles offen</strong>
+              </div>
+            </div>
+          </div>
+          <div class="schedule-time">20:00 – 22:00</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="community-panel">
+        <div class="community-grid">
+
+          <div class="community-content">
+            <span class="community-badge">Discord Community</span>
+            <h2>Komm rein und mach mit</h2>
+            <p class="sub">
+              Auf Discord erfährst du Änderungen am schnellsten, bekommst Infos zu spontanen Streams
+              und kannst dich direkt mit der Community austauschen.
+            </p>
+
+            <p>
+              Dort findest du Ankündigungen, Gespräche rund um Streams, spontane Updates und die beste Möglichkeit,
+              bei Projekten und Community-Aktionen direkt dabei zu sein.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="https://discord.gg/WfTbuyhXcJ" target="_blank" rel="noopener noreferrer">
+                Discord beitreten
+              </a>
+            </div>
+          </div>
+
+          <div class="community-media">
+            <img src="/assets/img/Discord-Symbol.svg" alt="Discord Community von hundekuchenlive"
+              class="community-image" loading="lazy" decoding="async" width="1280" height="720">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>Zusätzliche Streams</h2>
+        <p>
+          Aufgrund meiner aktuellen gesundheitlichen Situation kann es vorkommen, dass ich bereits vormittags oder
+          früher am Tag live gehe.
+          An solchen Tagen können zusätzlich zu den festen Hauptslots weitere Sessions mit wechselnden Spielen
+          stattfinden.
+        </p>
+        <p style="margin-bottom:0;">
+          Neben den festen Abendterminen sind daher auch spontane Streams, längere Sessions oder wechselnde Titel über
+          den Tag verteilt möglich.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <div class="tile" style="grid-column: span 6;">
+          <h3>Typische Inhalte außerhalb des Plans</h3>
+          <p>
+            Zusätzliche Streams können aus spontanen Gaming-Sessions, Community-Runden oder wechselnden Titeln bestehen,
+            je nachdem, wie der Tag verläuft.
+          </p>
+        </div>
+
+        <div class="tile" style="grid-column: span 6;">
+          <h3>Wo Änderungen zuerst sichtbar sind</h3>
+          <p>
+            Kurzfristige Änderungen, frühere Starts oder spontane Zusatzstreams werden in der Regel zuerst auf Twitch
+            und Discord sichtbar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2>Wichtiger Hinweis</h2>
+        <p style="margin-bottom:0;">
+          Alle Zeiten sind geplante Richtwerte. Änderungen, frühere Starts oder zusätzliche Streams sind jederzeit
+          möglich.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer" role="contentinfo"></footer>
+  <script src="/assets/js/layout.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+
+</body>
+
+</html>

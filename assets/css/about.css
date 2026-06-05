@@ -1,0 +1,156 @@
+.about-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-inline: 16px;
+  text-align: center;
+}
+
+.about-page>.section {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Intro / Panels */
+.about-panel {
+  width: 100%;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.about-intro {
+  display: grid;
+  gap: 22px;
+  justify-items: center;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-panel p,
+.about-intro p {
+  max-width: 72ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Buttons mittig */
+.about-page .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Desktop: 3 Cards nebeneinander */
+@media (min-width: 701px) {
+
+  .about-page .about-highlight-grid,
+  .about-page .about-content-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px;
+    width: 100%;
+    margin-top: 24px;
+    align-items: stretch;
+  }
+
+  .about-page .about-highlight-grid>.tile,
+  .about-page .about-content-grid>.tile {
+    grid-column: auto !important;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+  }
+
+  /* About-Seite: Subtexte sauber mittig ausrichten */
+  .about-page .sub {
+    display: block;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+/* Cards einheitlich */
+.about-page .about-highlight-grid>.tile,
+.about-page .about-content-grid>.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.about-page .about-highlight-grid>.tile h3,
+.about-page .about-content-grid>.tile h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.about-page .about-highlight-grid>.tile p,
+.about-page .about-content-grid>.tile p {
+  max-width: 34ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.btn {
+  text-decoration: none;
+}
+
+/* Kooperationen */
+.about-page .section:last-of-type .about-panel {
+  max-width: 920px;
+}
+
+.about-page .section:last-of-type .about-panel p {
+  max-width: 64ch;
+}
+
+/* Mobile: Cards untereinander */
+@media (max-width: 700px) {
+
+  .about-page .about-highlight-grid,
+  .about-page .about-content-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+    max-width: 640px;
+    margin: 24px auto 0;
+  }
+
+  .about-page .about-highlight-grid>.tile,
+  .about-page .about-content-grid>.tile {
+    grid-column: auto !important;
+    width: 100%;
+  }
+
+  .about-page .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .about-page .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Kleine Smartphones */
+@media (max-width: 560px) {
+  .about-page {
+    padding-inline: 12px;
+  }
+
+  .about-panel p,
+  .about-intro p {
+    max-width: 100%;
+  }
+}

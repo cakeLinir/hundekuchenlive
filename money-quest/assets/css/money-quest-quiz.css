@@ -1,0 +1,785 @@
+/* =========================
+   MONEY-QUEST-QUIZ
+   Struktur:
+   1. Tokens
+   2. Base
+   3. Layout
+   4. Header
+   5. Hero
+   6. Cards / Status
+   7. Sections / Feature Cards
+   8. Quiz
+   9. Result / Transparency
+   10. Footer
+   11. Responsive
+========================= */
+
+/* =========================
+   1. TOKENS
+========================= */
+
+:root {
+  --mq-bg: #07110c;
+  --mq-bg-deep: #020403;
+  --mq-panel: rgba(255, 255, 255, 0.07);
+  --mq-panel-strong: rgba(255, 255, 255, 0.10);
+  --mq-stroke: rgba(255, 255, 255, 0.12);
+  --mq-text: rgba(255, 255, 255, 0.94);
+  --mq-muted: rgba(255, 255, 255, 0.70);
+
+  --mq-green: #42d37a;
+  --mq-green-2: #83f0a8;
+  --mq-gold: #f4c96b;
+  --mq-red: #ff6b6b;
+
+  --mq-radius: 22px;
+  --mq-radius-sm: 14px;
+  --mq-shadow: rgba(0, 0, 0, 0.48);
+  --mq-max: 1120px;
+}
+
+/* =========================
+   2. BASE
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(1000px 600px at 15% 0%, rgba(66, 211, 122, 0.18), transparent 58%),
+    radial-gradient(900px 600px at 85% 5%, rgba(244, 201, 107, 0.12), transparent 55%),
+    linear-gradient(180deg, var(--mq-bg) 0%, var(--mq-bg-deep) 100%);
+  color: var(--mq-text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  appearance: none;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(131, 240, 168, 0.72);
+  outline-offset: 3px;
+}
+
+.mq-skip-link {
+  position: absolute;
+  left: 18px;
+  top: 12px;
+  z-index: 100;
+  transform: translateY(-140%);
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--mq-green-2);
+  color: #06100a;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.mq-skip-link:focus {
+  transform: translateY(0);
+}
+
+/* =========================
+   3. LAYOUT
+========================= */
+
+.mq-container {
+  max-width: var(--mq-max);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.mq-section {
+  padding: 34px 0;
+}
+
+.mq-hero-content,
+.mq-hero-card,
+.mq-feature-card,
+.mq-quiz-shell,
+.mq-result-shell,
+.mq-info-panel {
+  border: 1px solid var(--mq-stroke);
+  border-radius: var(--mq-radius);
+  box-shadow: 0 24px 60px var(--mq-shadow);
+}
+
+/* =========================
+   4. HEADER
+========================= */
+
+.mq-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(7, 17, 12, 0.82);
+  border-bottom: 1px solid var(--mq-stroke);
+  backdrop-filter: blur(12px);
+}
+
+.mq-header-inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mq-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.mq-brand-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  border: 1px solid var(--mq-stroke);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(66, 211, 122, 0.18), rgba(244, 201, 107, 0.10));
+}
+
+.mq-brand-mark img {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.mq-brand strong {
+  display: block;
+  line-height: 1.1;
+}
+
+.mq-brand small {
+  display: block;
+  color: var(--mq-muted);
+  font-size: 0.78rem;
+}
+
+.mq-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mq-nav a {
+  padding: 9px 11px;
+  border-radius: 999px;
+  color: var(--mq-muted);
+  text-decoration: none;
+}
+
+.mq-nav a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--mq-text);
+}
+
+/* =========================
+   5. HERO
+========================= */
+
+.mq-hero {
+  padding: 72px 0 34px;
+}
+
+.mq-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.mq-hero-content {
+  padding: clamp(24px, 4vw, 42px);
+  background:
+    radial-gradient(500px 260px at 20% 0%, rgba(66, 211, 122, 0.18), transparent 65%),
+    var(--mq-panel);
+}
+
+.mq-eyebrow {
+  margin: 0 0 12px;
+  color: var(--mq-gold);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mq-hero h1 {
+  max-width: 780px;
+  margin: 0 0 16px;
+  font-size: 53px;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.mq-hero h1 span {
+  color: var(--mq-green-2);
+}
+
+.mq-lead {
+  max-width: 68ch;
+  margin: 0 0 24px;
+  color: var(--mq-muted);
+  font-size: 1.08rem;
+}
+
+.mq-hero-actions,
+.mq-result-actions,
+.mq-quiz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mq-check-list {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--mq-muted);
+  font-size: 0.94rem;
+}
+
+.mq-check-list li {
+  position: relative;
+  padding-left: 24px;
+}
+
+.mq-check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--mq-green-2);
+  font-weight: 900;
+}
+
+/* =========================
+   6. BUTTONS
+========================= */
+
+.mq-btn {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border: 1px solid var(--mq-stroke);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--mq-text);
+  cursor: pointer;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    transform 0.16s ease,
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.mq-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(131, 240, 168, 0.45);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+}
+
+.mq-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.mq-btn-primary {
+  background: linear-gradient(135deg, var(--mq-green), var(--mq-gold));
+  border-color: rgba(244, 201, 107, 0.55);
+  color: #06100a;
+}
+
+.mq-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--mq-green-2), var(--mq-gold));
+}
+
+.mq-btn-ghost {
+  color: var(--mq-text);
+}
+
+/* =========================
+   7. HERO STATUS CARD
+========================= */
+
+.mq-hero-card {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px;
+  background:
+    radial-gradient(420px 240px at 20% 0%, rgba(66, 211, 122, 0.12), transparent 70%),
+    rgba(255, 255, 255, 0.06);
+}
+
+.mq-status-card {
+  padding: 18px;
+  border: 1px solid var(--mq-stroke);
+  border-radius: var(--mq-radius-sm);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.mq-status-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--mq-gold);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mq-status-card strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.55rem;
+  line-height: 1.15;
+}
+
+.mq-status-card p,
+.mq-card-note,
+.mq-trust-box p {
+  margin: 0;
+  color: var(--mq-muted);
+}
+
+.mq-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mq-stat-grid div {
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 10px;
+  border: 1px solid var(--mq-stroke);
+  border-radius: var(--mq-radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+.mq-stat-grid strong {
+  display: block;
+  color: var(--mq-green-2);
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.1;
+}
+
+.mq-stat-grid span {
+  margin-top: 8px;
+  color: var(--mq-muted);
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+.mq-card-note {
+  line-height: 1.65;
+}
+
+.mq-trust-box {
+  padding: 16px;
+  border: 1px solid rgba(66, 211, 122, 0.18);
+  border-radius: var(--mq-radius-sm);
+  background: rgba(66, 211, 122, 0.08);
+}
+
+.mq-trust-box h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+/* =========================
+   8. SECTIONS / FEATURE CARDS
+========================= */
+
+.mq-section-head {
+  max-width: 760px;
+  margin-bottom: 18px;
+}
+
+.mq-section-head h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.mq-section-head p {
+  margin: 0;
+  color: var(--mq-muted);
+}
+
+.mq-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.mq-feature-card {
+  padding: 20px;
+  background: var(--mq-panel);
+}
+
+.mq-feature-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  margin-bottom: 14px;
+
+  border: 1px solid rgba(66, 211, 122, 0.24);
+  border-radius: 14px;
+  background: rgba(66, 211, 122, 0.10);
+  color: var(--mq-green-2);
+
+  font-weight: 900;
+}
+
+.mq-feature-card h3 {
+  margin: 0 0 8px;
+}
+
+.mq-feature-card p {
+  margin: 0;
+  color: var(--mq-muted);
+}
+
+/* =========================
+   9. QUIZ
+========================= */
+
+.mq-quiz-shell,
+.mq-result-shell {
+  padding: clamp(18px, 3vw, 28px);
+  background:
+    radial-gradient(500px 240px at 20% 0%, rgba(66, 211, 122, 0.13), transparent 70%),
+    var(--mq-panel);
+}
+
+.mq-quiz-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.mq-quiz-top h2,
+.mq-result-shell h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+}
+
+.mq-score-pill {
+  flex: 0 0 auto;
+  padding: 9px 13px;
+  border: 1px solid rgba(66, 211, 122, 0.24);
+  border-radius: 999px;
+  background: rgba(66, 211, 122, 0.10);
+  color: var(--mq-green-2);
+  font-weight: 900;
+}
+
+.mq-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: var(--mq-muted);
+  font-size: 0.92rem;
+}
+
+.mq-progress-bar {
+  height: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mq-progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--mq-green), var(--mq-gold));
+  transition: width 0.24s ease;
+}
+
+.mq-question-card {
+  padding: clamp(16px, 3vw, 22px);
+  border: 1px solid var(--mq-stroke);
+  border-radius: var(--mq-radius);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.mq-question-card h3 {
+  margin: 0 0 18px;
+  font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+}
+
+.mq-answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.mq-answer-btn {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px 14px;
+  border: 1px solid var(--mq-stroke);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--mq-text);
+
+  cursor: pointer;
+  text-align: left;
+}
+
+.mq-answer-btn:hover:not(:disabled) {
+  border-color: rgba(131, 240, 168, 0.55);
+  background: rgba(66, 211, 122, 0.12);
+}
+
+.mq-answer-btn:disabled {
+  cursor: default;
+}
+
+.mq-answer-label {
+  min-width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--mq-gold);
+
+  font-weight: 900;
+}
+
+.mq-answer-btn.is-correct {
+  border-color: rgba(66, 211, 122, 0.8);
+  background: rgba(66, 211, 122, 0.20);
+}
+
+.mq-answer-btn.is-wrong {
+  border-color: rgba(255, 107, 107, 0.8);
+  background: rgba(255, 107, 107, 0.18);
+}
+
+.mq-quiz-actions {
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* =========================
+   10. RESULT / TRANSPARENCY
+========================= */
+
+.mq-result-shell {
+  text-align: center;
+}
+
+.mq-result-shell p,
+.mq-result-score,
+.mq-result-box p,
+.mq-disclaimer,
+.mq-info-panel p,
+.mq-info-grid p {
+  color: var(--mq-muted);
+}
+
+.mq-result-score {
+  font-size: 1.1rem;
+}
+
+.mq-result-score strong {
+  color: var(--mq-green-2);
+}
+
+.mq-result-actions {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.mq-result-box,
+.mq-disclaimer {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid var(--mq-stroke);
+  border-radius: var(--mq-radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mq-result-box h3 {
+  margin: 0 0 8px;
+}
+
+.mq-disclaimer strong {
+  color: var(--mq-gold);
+}
+
+.mq-privacy-note {
+  margin: 18px 0 0;
+  color: var(--mq-muted);
+  font-size: 0.92rem;
+}
+
+.mq-info-panel {
+  padding: clamp(18px, 3vw, 28px);
+  background:
+    radial-gradient(500px 240px at 20% 0%, rgba(244, 201, 107, 0.10), transparent 70%),
+    var(--mq-panel);
+}
+
+.mq-info-panel h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+}
+
+.mq-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.mq-info-grid article {
+  padding: 18px;
+  border: 1px solid var(--mq-stroke);
+  border-radius: var(--mq-radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mq-info-grid h3 {
+  margin: 0 0 8px;
+}
+
+.mq-info-grid p {
+  margin: 0;
+}
+
+/* =========================
+   11. FOOTER
+========================= */
+
+.mq-footer {
+  margin-top: 34px;
+  padding: 24px 0;
+  border-top: 1px solid var(--mq-stroke);
+  color: var(--mq-muted);
+}
+
+.mq-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.mq-footer a {
+  color: var(--mq-muted);
+  text-underline-offset: 3px;
+}
+
+.mq-footer a:hover {
+  color: var(--mq-green-2);
+}
+
+/* =========================
+   12. RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .mq-hero-grid,
+  .mq-feature-grid,
+  .mq-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mq-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .mq-hero {
+    padding-top: 42px;
+  }
+
+  .mq-quiz-top,
+  .mq-progress-meta,
+  .mq-footer-inner {
+    flex-direction: column;
+  }
+
+  .mq-answers,
+  .mq-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mq-stat-grid div {
+    min-height: auto;
+  }
+
+  .mq-btn {
+    width: 100%;
+  }
+
+  .mq-result-actions,
+  .mq-hero-actions {
+    flex-direction: column;
+  }
+}

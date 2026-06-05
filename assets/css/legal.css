@@ -1,0 +1,144 @@
+.legal-page {
+  padding-top: 8px;
+}
+
+/* Hero-Bereich */
+.legal-hero {
+  text-align: center;
+}
+
+.legal-hero h1 {
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+
+.legal-hero .sub {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Karten allgemein */
+.legal-card {
+  scroll-margin-top: 96px;
+}
+
+.legal-card h2 {
+  font-size: 22px;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+.legal-card h3 {
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 18px 0 10px;
+}
+
+.legal-card p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+
+.legal-card li {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.legal-card ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.legal-card a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Impressum-Grid */
+.legal-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.legal-grid .legal-card {
+  grid-column: span 6;
+}
+
+/* Datenschutz-Stack */
+.legal-stack {
+  display: grid;
+  gap: 18px;
+}
+
+/* Inhaltsverzeichnis */
+.legal-toc ul {
+  display: grid;
+  gap: 8px 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-left: 18px;
+}
+
+.legal-toc li {
+  line-height: 1.45;
+}
+
+.legal-toc a {
+  text-decoration: none;
+}
+
+.legal-toc a:hover {
+  text-decoration: underline;
+}
+
+/* Lange Rechtstexte besser lesbar halten */
+.legal-card {
+  max-width: 100%;
+}
+
+.legal-stack .legal-card p,
+.legal-stack .legal-card li {
+  max-width: 92ch;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .legal-grid .legal-card {
+    grid-column: span 12;
+  }
+
+  .legal-toc ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .legal-card {
+    scroll-margin-top: 80px;
+  }
+
+  .legal-card h2 {
+    font-size: 19px;
+  }
+
+  .legal-card h3 {
+    font-size: 17px;
+  }
+
+  .legal-card li,
+  .legal-card p {
+    font-size: 15px;
+  }
+
+  .legal-card ul {
+    padding-left: 18px;
+  }
+
+  .legal-toc ul {
+    gap: 10px;
+  }
+}
