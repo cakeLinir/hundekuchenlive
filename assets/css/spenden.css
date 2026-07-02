@@ -1,0 +1,380 @@
+/* ================================
+   SPENDEN PAGE – hundekuchenlive
+   ================================ */
+
+.spenden-hero {
+  padding: 44px 0 18px;
+}
+
+.spenden-hero h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+
+.spenden-hero p {
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* Layout: Formular links, letzte Spenden rechts */
+.spenden-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1.4fr 0.6fr;
+  align-items: start;
+  padding: 22px 0;
+}
+
+/* ──────────────────────────────
+   FORMULAR CARD
+────────────────────────────── */
+.donate-card {
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px var(--shadow);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Betrag */
+.amount-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.preset-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px 20px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.preset-btn:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.preset-btn.active {
+  background: linear-gradient(135deg, rgba(74,163,255,0.9), rgba(124,198,255,0.8));
+  border-color: rgba(124,198,255,0.4);
+  color: #07101c;
+}
+
+html[data-theme="light"] .preset-btn {
+  background: rgba(255,255,255,0.78);
+  border-color: var(--stroke);
+  color: var(--text);
+}
+html[data-theme="light"] .preset-btn:hover {
+  background: rgba(23,109,56,0.10);
+  border-color: var(--primary);
+}
+html[data-theme="light"] .preset-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* Eingabefelder */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  padding: 12px 14px;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Zahlungsmethoden Tabs */
+.payment-tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.payment-tab {
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 10px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.payment-tab:hover {
+  background: rgba(255,255,255,0.09);
+}
+
+.payment-tab.active {
+  border-color: var(--primary);
+  background: rgba(74,163,255,0.10);
+}
+
+.payment-tab svg {
+  height: 28px;
+  width: auto;
+}
+
+.payment-tab span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.payment-tab.active span {
+  color: var(--primary);
+}
+
+/* Zahlungsanbieter-Info Badge */
+.provider-badges {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.provider-badge {
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 12px;
+  gap: 6px;
+  padding: 5px 10px;
+}
+
+.provider-badge svg {
+  height: 16px;
+  width: auto;
+}
+
+/* Spenden-Button */
+.donate-btn {
+  background: linear-gradient(135deg, rgba(74,163,255,0.95), rgba(124,198,255,0.85));
+  border: 1px solid rgba(124,198,255,0.4);
+  border-radius: 14px;
+  color: #07101c;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 14px;
+  transition: filter 0.15s, opacity 0.15s;
+  width: 100%;
+}
+
+.donate-btn:hover {
+  filter: brightness(1.05);
+}
+
+.donate-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+html[data-theme="light"] .donate-btn {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* Status Meldungen */
+.form-status {
+  border-radius: var(--radius-sm);
+  display: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 14px;
+  text-align: center;
+}
+
+.form-status.visible { display: block; }
+
+.form-status--success {
+  background: rgba(83,232,155,0.12);
+  border: 1px solid rgba(83,232,155,0.30);
+  color: #53e89b;
+}
+
+.form-status--error {
+  background: rgba(255,112,112,0.12);
+  border: 1px solid rgba(255,112,112,0.30);
+  color: #ff7070;
+}
+
+/* ──────────────────────────────
+   LETZTE SPENDEN SIDEBAR
+────────────────────────────── */
+.recent-card {
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px var(--shadow);
+  padding: 20px;
+}
+
+.recent-card h2 {
+  font-size: 16px;
+  margin: 0 0 16px;
+}
+
+.donation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.donation-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+
+.donation-item-header {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.donation-donor {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.donation-amount {
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.donation-message {
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+  margin: 0;
+}
+
+.donation-time {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.donation-provider {
+  color: var(--muted);
+  font-size: 11px;
+  margin-left: auto;
+}
+
+.no-donations {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* ──────────────────────────────
+   SUCCESS / CANCEL OVERLAY
+────────────────────────────── */
+.status-banner {
+  border-radius: var(--radius-sm);
+  display: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.status-banner.visible { display: block; }
+
+.status-banner.success {
+  background: rgba(83,232,155,0.12);
+  border: 1px solid rgba(83,232,155,0.30);
+  color: #53e89b;
+}
+
+.status-banner.cancel {
+  background: rgba(255,183,77,0.12);
+  border: 1px solid rgba(255,183,77,0.30);
+  color: #ffb74d;
+}
+
+/* ──────────────────────────────
+   RESPONSIVE
+────────────────────────────── */
+@media (max-width: 860px) {
+  .spenden-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-card {
+    order: -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .donate-card {
+    padding: 18px;
+  }
+
+  .payment-tabs {
+    flex-direction: column;
+  }
+
+  .payment-tab {
+    flex-direction: row;
+    padding: 12px 14px;
+  }
+}
