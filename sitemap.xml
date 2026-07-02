@@ -40,5 +40,9 @@
     <loc>https://hundekuchenlive.de/datenschutz/</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://hundekuchenlive.de/spenden/</loc>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
