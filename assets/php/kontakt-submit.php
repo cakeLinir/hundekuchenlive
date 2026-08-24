@@ -1,7 +1,8 @@
 <?php
 // assets/php/kontakt-submit.php
 declare(strict_types=1);
-
+ini_set('display_errors', '1');  // ← temporär zum Debuggen
+error_reporting(E_ALL);          // ← temporär zum Debuggen
 header('Content-Type: application/json; charset=utf-8');
 
 // Nur POST
@@ -13,6 +14,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     ]);
     exit;
 }
+
+// Rate-Limiting
+require_once __DIR__ . '/rate-limit.php';
+
+$clientIp = rate_limit_client_ip();
+if (!rate_limit_check($clientIp, 'contact_form')) {
+    http_response_code(429);
+    header('Retry-After: 60');
+    echo json_encode([
+        'success' => false,
+        'error' => 'Zu viele Anfragen. Bitte warte kurz und versuche es später erneut.'
+    ]);
+    exit;
+}
+
 
 // JSON einlesen
 $raw = file_get_contents('php://input');
@@ -30,7 +46,7 @@ if (!is_array($data)) {
 // Felder
 $name = trim($data['name'] ?? '');
 $email = trim($data['email'] ?? '');
-$package   = trim($data['package'] ?? '');
+$package = trim($data['package'] ?? '');
 $subject = trim($data['subject'] ?? '');
 $message = trim($data['message'] ?? '');
 $website = trim($data['website'] ?? '');
@@ -41,13 +57,34 @@ if ($website !== '') {
     echo json_encode(['success' => true]);
     exit;
 }
+// Längen begrenzen (Schutz vor Mailbomben/Missbrauch)
+$maxLengths = [
+    'name' => 150,
+    'email' => 200,
+    'subject' => 200,
+    'package' => 100,
+    'message' => 5000,
+];
 
-// Token prüfen
-if ($formToken !== 'partner_contact_v1') {
-    http_response_code(400);
+foreach ($maxLengths as $field => $max) {
+    if (isset($$field) && mb_strlen($$field) > $max) {
+        http_response_code(400);
+        echo json_encode([
+            'success' => false,
+            'error' => "Das Feld \"$field\" ist zu lang (max. $max Zeichen)."
+        ]);
+        exit;
+    }
+}
+
+// CSRF-Token prüfen
+require_once __DIR__ . '/csrf.php';
+
+if (!csrf_verify($formToken)) {
+    http_response_code(403);
     echo json_encode([
         'success' => false,
-        'error' => 'Ungültiges Formular-Token.'
+        'error' => 'Sicherheitsprüfung fehlgeschlagen. Bitte lade die Seite neu und versuche es erneut.'
     ]);
     exit;
 }

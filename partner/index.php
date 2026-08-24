@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/../assets/php/csrf.php';
+$csrfToken = csrf_token();
+?>
 <!DOCTYPE html>
 <html lang="de">
 
@@ -340,7 +344,7 @@
                 <input type="text" id="contact-website" name="website" autocomplete="off">
               </div>
 
-              <input type="hidden" name="form_token" value="partner_contact_v1">
+              <input type="hidden" name="form_token" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
 
               <div class="form-actions">
                 <button type="submit" class="btn primary">Anfrage senden</button>

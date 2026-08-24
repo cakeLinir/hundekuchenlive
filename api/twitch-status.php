@@ -7,7 +7,8 @@ $clientId = TWITCH_CLIENT_ID;
 $clientSecret = TWITCH_CLIENT_SECRET;
 $userLogin = 'hundekuchenlive';
 
-function http_post($url, $postFields) {
+function http_post($url, $postFields)
+{
     $ch = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
@@ -29,7 +30,8 @@ function http_post($url, $postFields) {
     return $response;
 }
 
-function http_get($url, $headers = []) {
+function http_get($url, $headers = [])
+{
     $ch = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
@@ -51,7 +53,8 @@ function http_get($url, $headers = []) {
 }
 
 // Returns a cached app access token, fetching a new one only when expired.
-function getAccessToken(string $clientId, string $clientSecret): string {
+function getAccessToken(string $clientId, string $clientSecret): string
+{
     $cacheFile = sys_get_temp_dir() . '/hkl_twitch_token.json';
 
     if (file_exists($cacheFile)) {
@@ -63,19 +66,31 @@ function getAccessToken(string $clientId, string $clientSecret): string {
     }
 
     $data = json_decode(http_post('https://id.twitch.tv/oauth2/token', [
-        'client_id'     => $clientId,
+        'client_id' => $clientId,
         'client_secret' => $clientSecret,
-        'grant_type'    => 'client_credentials',
+        'grant_type' => 'client_credentials',
     ]), true);
 
     if (!isset($data['access_token'])) {
         throw new Exception('No access token returned by Twitch.');
     }
 
-    file_put_contents($cacheFile, json_encode([
-        'token'      => $data['access_token'],
-        'expires_at' => time() + ($data['expires_in'] ?? 3600),
-    ]));
+    $fp = fopen($cacheFile, 'c+');
+    if ($fp !== false) {
+        flock($fp, LOCK_EX);
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, json_encode([
+            'token' => $data['access_token'],
+            'expires_at' => time() + ($data['expires_in'] ?? 3600),
+        ]));
+        fflush($fp);
+        flock($fp, LOCK_UN);
+        fclose($fp);
+    } else {
+        error_log('Twitch-Token: Konnte Cache-Datei nicht schreiben: ' . $cacheFile);
+    }
+
 
     return $data['access_token'];
 }
@@ -100,19 +115,21 @@ try {
     if (count($streamData['data']) > 0) {
         $stream = $streamData['data'][0];
         echo json_encode([
-            'live'         => true,
-            'title'        => $stream['title'] ?? '',
-            'game_name'    => $stream['game_name'] ?? '',
+            'live' => true,
+            'title' => $stream['title'] ?? '',
+            'game_name' => $stream['game_name'] ?? '',
             'viewer_count' => $stream['viewer_count'] ?? 0,
-            'started_at'   => $stream['started_at'] ?? null,
+            'started_at' => $stream['started_at'] ?? null,
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     } else {
         echo json_encode(['live' => false], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 } catch (Exception $e) {
+    error_log('Twitch-Status-Fehler: ' . $e->getMessage());
     http_response_code(500);
     echo json_encode([
-        'live'  => false,
-        'error' => $e->getMessage(),
+        'live' => false,
+        'error' => 'Status derzeit nicht verfügbar.',
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }
+
