@@ -141,14 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await response.json().catch(() => ({}));
 
-      if (!response.ok || !data.success) {
+      if (response.status === 429) {
+        statusEl.textContent = 'Bitte warte kurz – du hast zu viele Anfragen in kurzer Zeit gesendet.';
+        statusEl.className = 'form-status sub form-status--error';
+      } else if (!response.ok || !data.success) {
         const msg = data.error || 'Beim Senden ist ein Fehler aufgetreten. Bitte versuche es später erneut.';
         statusEl.textContent = msg;
         statusEl.className = 'form-status sub form-status--error';
-      } else {
-        statusEl.textContent = data.message || 'Vielen Dank! Deine Anfrage wurde erfolgreich gesendet.';
-        statusEl.className = 'form-status sub form-status--success';
-        form.reset();
       }
     } catch (err) {
       console.error('Kontaktformular Fehler:', err);

@@ -1,0 +1,75 @@
+/* =========================================================
+   hundekuchenlive – Streamplan (plan.css)
+   ========================================================= */
+
+.tone-live { --tile: var(--lime); --on-tile: var(--ink); --tilt: -0.7deg; }
+.tone-team { --tile: var(--teal); --on-tile: var(--ink); --tilt: 0.6deg; }
+
+.plan-badge {
+  background: var(--tile);
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  color: var(--on-tile, var(--ink));
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.plan-list { display: grid; gap: 24px; }
+.plan-row {
+  align-items: start;
+  background: var(--panel);
+  border: 3px solid var(--edge);
+  border-radius: var(--radius);
+  box-shadow: 6px 6px 0 var(--tile);
+  display: grid;
+  gap: 8px 22px;
+  grid-template-columns: 120px 1fr auto;
+  padding: 22px 24px;
+  position: relative;
+  rotate: var(--tilt, 0deg);
+  transition: rotate 0.2s ease, translate 0.2s ease, box-shadow 0.2s ease;
+}
+.plan-row:hover { rotate: 0deg; translate: 0 -3px; }
+.plan-abbr {
+  -webkit-text-stroke: 3px var(--tile);
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 0.95;
+}
+.plan-main h3 { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); letter-spacing: 0.02em; margin: 0 0 6px; text-transform: uppercase; }
+.plan-main > p { margin: 0; }
+.slots { display: grid; gap: 8px; list-style: none; margin: 10px 0 0; padding: 0; }
+.slots li { display: grid; gap: 2px 14px; grid-template-columns: 130px 1fr; }
+.slots .t { color: var(--text); font-family: var(--font-display); font-size: 17px; letter-spacing: 0.06em; }
+.slots .d { color: var(--muted); }
+
+.plan-row.is-today { box-shadow: 0 0 0 4px var(--lime), 8px 8px 0 var(--tile); }
+.plan-row.is-today .plan-abbr { color: var(--tile); }
+.plan-row.is-today::after {
+  background: var(--lime);
+  border: 3px solid var(--ink);
+  bottom: -14px;
+  color: var(--ink);
+  content: "HEUTE";
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  padding: 0 10px;
+  position: absolute;
+  right: 18px;
+  rotate: -4deg;
+}
+
+@media (max-width: 800px) {
+  .plan-row { grid-template-columns: 1fr; }
+  .plan-abbr { font-size: 48px; }
+  .slots li { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plan-row { transition: none; }
+}
+    

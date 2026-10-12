@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /assets/php/
+Disallow: /components/
+Disallow: /cloud/
 
 Sitemap: https://hundekuchenlive.de/sitemap.xml

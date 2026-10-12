@@ -29,9 +29,7 @@
 
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
       const text = button.querySelector(".theme-toggle-text");
-
       button.setAttribute("aria-pressed", String(isLight));
-
       if (text) {
         text.textContent = isLight ? "Lightmode" : "Darkmode";
       }
@@ -40,9 +38,13 @@
 
   applyTheme(getTheme());
 
+  // Sicherheitsnetz: Zustand erneut anwenden, falls Komponenten später nachgeladen werden
+  document.addEventListener("layout:loaded", () => {
+    applyTheme(root.getAttribute("data-theme") || getTheme());
+  });
+
   document.addEventListener("click", (event) => {
     const button = event.target.closest("[data-theme-toggle]");
-
     if (!button) return;
 
     const currentTheme = root.getAttribute("data-theme") || getTheme();

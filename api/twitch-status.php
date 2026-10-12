@@ -1,135 +1,202 @@
 <?php
+declare(strict_types=1);
+
 header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
 
-require __DIR__ . '/../config.php';
+const TWITCH_USER_LOGIN = 'hundekuchenlive';
+const STATUS_TTL = 45;          // Sekunden: so lange gilt eine gecachte Antwort
+const STATUS_STALE_MAX = 600;   // Sekunden: Fallback bei Twitch-Fehlern
 
-$clientId = TWITCH_CLIENT_ID;
-$clientSecret = TWITCH_CLIENT_SECRET;
-$userLogin = 'hundekuchenlive';
-
-function http_post($url, $postFields)
+/** Fehler mit kurzem, geheimnisfreiem Grund-Code */
+class StatusException extends RuntimeException
 {
-    $ch = curl_init($url);
-    curl_setopt_array($ch, [
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => http_build_query($postFields),
-        CURLOPT_TIMEOUT => 15,
-    ]);
-    $response = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    $error = curl_error($ch);
-    curl_close($ch);
+    private $reason;
 
-    if ($response === false) {
-        throw new Exception('POST request failed: ' . $error);
+    public function __construct(string $reason, string $message)
+    {
+        parent::__construct($message);
+        $this->reason = $reason;
     }
-    if ($httpCode < 200 || $httpCode >= 300) {
-        throw new Exception('POST request returned HTTP ' . $httpCode . ': ' . $response);
+
+    public function getReason(): string
+    {
+        return $this->reason;
     }
-    return $response;
 }
 
-function http_get($url, $headers = [])
+function json_out(array $payload, int $status = 200): void
 {
+    http_response_code($status);
+    echo json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+function cache_path(string $name): string
+{
+    return sys_get_temp_dir() . '/hkl_' . $name . '.json';
+}
+
+function cache_read(string $name): ?array
+{
+    $file = cache_path($name);
+    if (!is_file($file)) {
+        return null;
+    }
+    $data = json_decode((string) @file_get_contents($file), true);
+    return is_array($data) ? $data : null;
+}
+
+function cache_write(string $name, array $data): void
+{
+    $file = cache_path($name);
+    if (@file_put_contents($file, json_encode($data), LOCK_EX) === false) {
+        error_log('Twitch-Cache: Konnte Datei nicht schreiben: ' . $file);
+        return;
+    }
+    @chmod($file, 0600);
+}
+
+/** @return array{0:int,1:string} [HTTP-Code, Body] */
+function http_request(string $method, string $url, array $headers = [], array $postFields = []): array
+{
+    if (!function_exists('curl_init')) {
+        throw new StatusException('curl_missing', 'PHP-cURL ist nicht verfügbar.');
+    }
+
     $ch = curl_init($url);
-    curl_setopt_array($ch, [
+    $options = [
         CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 5,
+        CURLOPT_TIMEOUT => 8,
         CURLOPT_HTTPHEADER => $headers,
-        CURLOPT_TIMEOUT => 15,
-    ]);
-    $response = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    $error = curl_error($ch);
-    curl_close($ch);
+    ];
+    if ($method === 'POST') {
+        $options[CURLOPT_POST] = true;
+        $options[CURLOPT_POSTFIELDS] = http_build_query($postFields);
+    }
+    curl_setopt_array($ch, $options);
 
-    if ($response === false) {
-        throw new Exception('GET request failed: ' . $error);
+    $body = curl_exec($ch);
+    $code = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $error = curl_error($ch);
+
+    if ($body === false) {
+        throw new StatusException('network', $method . ' fehlgeschlagen: ' . $error);
     }
-    if ($httpCode < 200 || $httpCode >= 300) {
-        throw new Exception('GET request returned HTTP ' . $httpCode . ': ' . $response);
-    }
-    return $response;
+    return [$code, (string) $body];
 }
 
-// Returns a cached app access token, fetching a new one only when expired.
-function getAccessToken(string $clientId, string $clientSecret): string
+// Liefert ein gecachtes App-Token; holt nur bei Ablauf (oder erzwungen) ein neues.
+function get_access_token(string $clientId, string $clientSecret, bool $forceRefresh = false): string
 {
-    $cacheFile = sys_get_temp_dir() . '/hkl_twitch_token.json';
-
-    if (file_exists($cacheFile)) {
-        $cached = json_decode((string) file_get_contents($cacheFile), true);
-        // Keep using the cached token until 5 minutes before expiry
-        if (isset($cached['token'], $cached['expires_at']) && $cached['expires_at'] > time() + 300) {
-            return $cached['token'];
+    if (!$forceRefresh) {
+        $cached = cache_read('twitch_token');
+        if ($cached && isset($cached['token'], $cached['expires_at']) && (int) $cached['expires_at'] > time() + 300) {
+            return (string) $cached['token'];
         }
     }
 
-    $data = json_decode(http_post('https://id.twitch.tv/oauth2/token', [
+    [$code, $body] = http_request('POST', 'https://id.twitch.tv/oauth2/token', [], [
         'client_id' => $clientId,
         'client_secret' => $clientSecret,
         'grant_type' => 'client_credentials',
-    ]), true);
+    ]);
 
-    if (!isset($data['access_token'])) {
-        throw new Exception('No access token returned by Twitch.');
+    if ($code < 200 || $code >= 300) {
+        throw new StatusException('token_http_' . $code, 'Token-Anfrage lieferte HTTP ' . $code);
     }
 
-    $fp = fopen($cacheFile, 'c+');
-    if ($fp !== false) {
-        flock($fp, LOCK_EX);
-        ftruncate($fp, 0);
-        rewind($fp);
-        fwrite($fp, json_encode([
-            'token' => $data['access_token'],
-            'expires_at' => time() + ($data['expires_in'] ?? 3600),
-        ]));
-        fflush($fp);
-        flock($fp, LOCK_UN);
-        fclose($fp);
-    } else {
-        error_log('Twitch-Token: Konnte Cache-Datei nicht schreiben: ' . $cacheFile);
+    $data = json_decode($body, true);
+    if (!is_array($data) || empty($data['access_token'])) {
+        throw new StatusException('token_missing', 'Twitch hat kein Access-Token geliefert.');
     }
 
+    cache_write('twitch_token', [
+        'token' => $data['access_token'],
+        'expires_at' => time() + (int) ($data['expires_in'] ?? 3600),
+    ]);
 
-    return $data['access_token'];
+    return (string) $data['access_token'];
+}
+
+// Ruft den Stream-Status ab; bei 401 wird einmal ein neues Token geholt.
+function fetch_stream(string $clientId, string $clientSecret): array
+{
+    for ($attempt = 0; $attempt < 2; $attempt++) {
+        $token = get_access_token($clientId, $clientSecret, $attempt > 0);
+
+        [$code, $body] = http_request(
+            'GET',
+            'https://api.twitch.tv/helix/streams?user_login=' . urlencode(TWITCH_USER_LOGIN),
+            [
+                'Client-ID: ' . $clientId,
+                'Authorization: Bearer ' . $token,
+            ]
+        );
+
+        if ($code === 401 && $attempt === 0) {
+            continue;
+        }
+        if ($code < 200 || $code >= 300) {
+            throw new StatusException('helix_http_' . $code, 'Helix lieferte HTTP ' . $code);
+        }
+
+        $data = json_decode($body, true);
+        if (!is_array($data) || !isset($data['data']) || !is_array($data['data'])) {
+            throw new StatusException('unexpected_response', 'Unerwartete Antwort der Twitch-API.');
+        }
+        return $data['data'];
+    }
+
+    throw new StatusException('auth_failed', 'Twitch-Authentifizierung fehlgeschlagen.');
+}
+
+// ---- Ablauf ----------------------------------------------------------------
+
+require __DIR__ . '/../config.php';
+
+$cached = cache_read('twitch_status');
+$now = time();
+
+// Frische gecachte Antwort sofort ausliefern
+if ($cached && isset($cached['fetched_at'], $cached['payload']) && ($now - (int) $cached['fetched_at']) < STATUS_TTL) {
+    json_out($cached['payload']);
 }
 
 try {
-    $accessToken = getAccessToken($clientId, $clientSecret);
-
-    $streamResponse = http_get(
-        'https://api.twitch.tv/helix/streams?user_login=' . urlencode($userLogin),
-        [
-            'Client-ID: ' . $clientId,
-            'Authorization: Bearer ' . $accessToken,
-        ]
-    );
-
-    $streamData = json_decode($streamResponse, true);
-
-    if (!isset($streamData['data'])) {
-        throw new Exception('Unexpected Twitch API response.');
+    if (
+        !defined('TWITCH_CLIENT_ID') || !defined('TWITCH_CLIENT_SECRET') ||
+        TWITCH_CLIENT_ID === '' || TWITCH_CLIENT_SECRET === ''
+    ) {
+        throw new StatusException('config', 'Twitch-Zugangsdaten fehlen in der Konfiguration.');
     }
 
-    if (count($streamData['data']) > 0) {
-        $stream = $streamData['data'][0];
-        echo json_encode([
+    $streams = fetch_stream(TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET);
+
+    if (count($streams) > 0) {
+        $stream = $streams[0];
+        $payload = [
             'live' => true,
             'title' => $stream['title'] ?? '',
             'game_name' => $stream['game_name'] ?? '',
-            'viewer_count' => $stream['viewer_count'] ?? 0,
+            'viewer_count' => (int) ($stream['viewer_count'] ?? 0),
             'started_at' => $stream['started_at'] ?? null,
-        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        ];
     } else {
-        echo json_encode(['live' => false], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $payload = ['live' => false];
     }
-} catch (Exception $e) {
-    error_log('Twitch-Status-Fehler: ' . $e->getMessage());
-    http_response_code(500);
-    echo json_encode([
-        'live' => false,
-        'error' => 'Status derzeit nicht verfügbar.',
-    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-}
 
+    cache_write('twitch_status', ['fetched_at' => $now, 'payload' => $payload]);
+    json_out($payload);
+} catch (Throwable $e) {
+    $reason = $e instanceof StatusException ? $e->getReason() : 'unexpected';
+    error_log('Twitch-Status-Fehler [' . $reason . ']: ' . $e->getMessage());
+
+    // Bei Twitch-Problemen kurz den letzten bekannten Status weiterverwenden
+    if ($cached && isset($cached['fetched_at'], $cached['payload']) && ($now - (int) $cached['fetched_at']) < STATUS_STALE_MAX) {
+        json_out($cached['payload']);
+    }
+
+    json_out(['live' => false, 'error' => 'Status derzeit nicht verfügbar.', 'reason' => $reason], 500);
+}

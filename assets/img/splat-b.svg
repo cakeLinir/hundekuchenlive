@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="rough" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="30" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g fill="#000" filter="url(#rough)">
+    <polygon points="370,200 274,231 299,299 235,283 200,375 171,270 108,292 119,234 35,200 124,169 94,94 165,115 200,22 230,128 295,105 280,167"/>
+    <circle cx="200" cy="200" r="70"/>
+    <circle cx="372" cy="318" r="13"/>
+    <circle cx="40" cy="60" r="11"/>
+    <circle cx="352" cy="46" r="9"/>
+    <circle cx="58" cy="338" r="12"/>
+    <circle cx="300" cy="372" r="7"/>
+  </g>
+</svg>

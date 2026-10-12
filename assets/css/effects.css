@@ -1,0 +1,95 @@
+/* =========================================================
+   hundekuchenlive – globale Effekte (effects.css)
+   ========================================================= */
+
+.skip-link {
+  background: var(--lime);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  color: var(--ink);
+  font-weight: 800;
+  left: 12px;
+  padding: 10px 16px;
+  position: absolute;
+  top: -80px;
+  z-index: 110;
+}
+.skip-link:focus { top: 12px; }
+
+/* Scroll-Fortschritt */
+.scroll-progress {
+  background: linear-gradient(90deg, var(--lime), var(--teal), var(--magenta));
+  height: 5px;
+  inset: 0 0 auto 0;
+  pointer-events: none;
+  position: fixed;
+  transform: scaleX(var(--p, 0));
+  transform-origin: 0 50%;
+  z-index: 100;
+}
+
+/* Parallax */
+[data-parallax] { translate: 0 var(--py, 0px); }
+
+/* Partner-Logos: dunkler Kasten, damit helle Logos (z. B. weiße Schrift) in beiden Themes lesbar bleiben */
+.partner-logo {
+  background: radial-gradient(circle at 30% 20%, #1d241d, #0b0c0b);
+  border: 3px solid var(--edge);
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 var(--pop);
+  height: auto;
+  margin: 0 auto;
+  max-width: 320px;
+  object-fit: contain;
+  padding: 14px 20px;
+  width: 100%;
+}
+
+/* Karten der Unterseiten: Kipp-Winkel über "rotate", Hover hebt sie an */
+.s-card, .board-row, .step {
+  rotate: var(--tilt, 0deg);
+  transform: none;
+  transition: rotate 0.2s ease, translate 0.2s ease, box-shadow 0.2s ease;
+}
+.s-card:hover, .board-row:hover, .step:hover { rotate: 0deg; translate: 0 -4px; }
+
+/* Seiten-Hero: größerer Titel und Tape-Streifen */
+.page-hero .tag-title.xl { font-size: clamp(46px, 9vw, 118px); }
+.page-hero::after {
+  background: repeating-linear-gradient(135deg, var(--lime) 0 14px, var(--ink) 14px 28px);
+  border-block: 3px solid var(--ink);
+  content: "";
+  display: block;
+  height: 18px;
+  margin-top: clamp(26px, 4vw, 44px);
+  rotate: -1deg;
+  scale: 1.03;
+}
+
+/* Mobile Schnellzugriff */
+.action-bar {
+  backdrop-filter: blur(10px);
+  background: var(--header-bg);
+  border-top: 3px solid var(--ink);
+  bottom: 0;
+  display: none;
+  gap: 10px;
+  left: 0;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  position: fixed;
+  right: 0;
+  transition: translate 0.3s ease;
+  translate: 0 110%;
+  z-index: 70;
+}
+.action-bar .btn { flex: 1; width: auto; }
+.action-bar.is-visible { translate: 0 0; }
+
+@media (max-width: 700px) {
+  .action-bar { display: flex; }
+  #site-footer { padding-bottom: 92px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .action-bar, .s-card, .board-row, .step { transition: none; }
+  [data-parallax] { translate: none; }
+}
