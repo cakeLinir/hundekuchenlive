@@ -3,6 +3,7 @@ $page = [
     'title' => 'Creator-Cloud | hundekuchenlive',
     'description' => 'Geschützter Cloud-Bereich von hundekuchenlive für Rohmaterial, Schnittprojekte und fertige Videos. Zugang nur für berechtigte Personen.',
     'path' => '/cloud/',
+    'robots' => 'noindex,nofollow',
     'css' => ['pages.css'],
     'body' => 'page',
 ];
