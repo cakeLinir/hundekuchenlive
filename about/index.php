@@ -25,7 +25,7 @@ require dirname(__DIR__) . '/components/head.php';
       <div class="container split">
         <div class="prose">
           <p>Seit 2018 teile ich meine Leidenschaft für Gaming und Unterhaltung auf Twitch. Mein Fokus liegt auf einer aktiven Community, wiedererkennbarem Content und Projekten, die langfristig wachsen können.</p>
-          <p>Mein Schwerpunkt ist <strong>Valorant</strong>. Ich bin Mitglied bei <strong>Unknown Forces Esports e.V.</strong> und spiele dort im Team <a class="text-link" href="https://unknown-forces.com/team-detail?tab=Valo%20PC%20UKF%20Eclipse" target="_blank" rel="noopener noreferrer">UKF Eclipse</a>. Dazu kommen <strong>Rocket League</strong>, weitere Games und entspannte Community-Abende mit Mates. Highlights und kurze Ausschnitte findest du auf TikTok und YouTube.</p>
+          <p>Mein Schwerpunkt ist <strong>Valorant</strong>. Ich bin Mitglied bei <strong>Unknown Forces eSports e.V.</strong> und spiele dort im Team <a class="text-link" href="https://unknown-forces.com/team-detail?tab=Valo%20PC%20UKF%20Eclipse" target="_blank" rel="noopener noreferrer">UKF Eclipse</a>. Dazu kommen <strong>Rocket League</strong>, weitere Games und entspannte Community-Abende mit Mates. Highlights und kurze Ausschnitte findest du auf TikTok und YouTube.</p>
           <div class="callout">
             <p>Live dabei sein oder Clips schauen:</p>
             <div class="actions">
