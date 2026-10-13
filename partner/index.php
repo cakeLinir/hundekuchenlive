@@ -4,7 +4,7 @@ $csrfToken = csrf_token();
 
 $page = [
     'title' => 'Partner & Kooperationen | hundekuchenlive',
-    'description' => 'Aktuelle Partner, Affiliate-Angebote und Kooperationspakete für Streams, Discord und Website von hundekuchenlive. Jetzt unverbindlich anfragen.',
+    'description' => 'Aktuelle Partner, Affiliate-Angebote und faire Kooperationspakete für Streams, Discord und Website von hundekuchenlive. Jetzt unverbindlich anfragen.',
     'path' => '/partner/',
     'css' => ['pages.css'],
     'body' => 'page',
@@ -55,6 +55,11 @@ require dirname(__DIR__) . '/components/head.php';
           <article class="s-card c-magenta">
             <h3>Dein Logo hier?</h3>
             <p>Dieser Platz ist frei für den nächsten Sponsor oder Kooperationspartner mit Logo, Beschreibung und Verlinkung.</p>
+            <div class="callout" style="border:0;padding:14px 0 0">
+              <div class="actions">
+                <a class="btn primary" href="#kontakt-anfragen">Jetzt anfragen</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -63,36 +68,93 @@ require dirname(__DIR__) . '/components/head.php';
     <section class="section" aria-labelledby="pakete">
       <div class="container">
         <h2 class="tag-title lg" id="pakete">Die Pakete</h2>
-        <p class="sub">Alle Preise sind unverbindliche Richtwerte und werden individuell abgestimmt.</p>
+        <p class="sub">Kleine, persönliche Community statt anonymer Reichweite: aktuell ca. 3 Live-Zuschauer im Schnitt, rund 1.200 Follower und ca. 52 Discord-Mitglieder (Stand: Oktober 2026). Deshalb gibt es faire Einstiegspreise. Wer früh einsteigt, behält seinen Preis 6 Monate garantiert.</p>
         <div class="cards-3">
           <article class="s-card c-lime">
             <h3>Starter Shoutout</h3>
-            <p>Für kleine Brands und erste Testkampagnen.</p>
-            <p class="price">ab ca. 15 €</p>
+            <p>Für kleine Brands, lokale Shops und erste Testkampagnen.</p>
+            <p class="price">10 € einmalig</p>
             <ul>
-              <li>Twitch: 1× mündliche Erwähnung pro Stream, Logo und Link im Panel</li>
-              <li>Discord: Erwähnung im Partner-Channel</li>
+              <li><strong>Laufzeit:</strong> 14 Tage, keine Vertragsbindung</li>
+              <li>Twitch: mündliche Erwähnung in jedem Stream, Logo und Link im Panel</li>
+              <li>Discord: 1 Post im Partner-Channel</li>
               <li>Website: Logo und Link im Partnerbereich</li>
             </ul>
+            <div class="callout" style="border:0;padding:14px 0 0">
+              <div class="actions">
+                <a class="btn primary" href="#kontakt-anfragen">Starter anfragen</a>
+              </div>
+            </div>
           </article>
           <article class="s-card c-teal">
             <h3>Community Partner</h3>
             <p>Für Marken, die regelmäßig sichtbar sein wollen.</p>
-            <p class="price">ca. 40–80 €/Monat</p>
+            <p class="price">25 €/Monat</p>
             <ul>
-              <li>Twitch: fester Overlay-Slot, 1–2 Werbe-Statements, Verlinkung in Panels</li>
+              <li><strong>Laufzeit:</strong> mindestens 1 Monat, danach monatlich kündbar. Bei 3 Monaten im Voraus 10 % Rabatt</li>
+              <li>Twitch: fester Overlay-Slot, 1 Werbe-Statement pro Stream, Verlinkung in den Panels</li>
               <li>Discord: gepinnter Post, wöchentlicher Reminder</li>
-              <li>Website: Logo, Beschreibung und Link, optional Vorstellung</li>
+              <li>Website: Logo, Beschreibung und Link, optional kurze Vorstellung</li>
             </ul>
+            <div class="callout" style="border:0;padding:14px 0 0">
+              <div class="actions">
+                <a class="btn primary" href="#kontakt-anfragen">Partner werden</a>
+              </div>
+            </div>
           </article>
           <article class="s-card c-magenta">
             <h3>Main Sponsor</h3>
-            <p>Für Hauptpartner mit klarer Sichtbarkeit.</p>
-            <p class="price">ca. 100–200 €/Monat</p>
+            <p>Für den Hauptpartner mit klarer Sichtbarkeit. Nur 1 Platz verfügbar.</p>
+            <p class="price">50 €/Monat</p>
             <ul>
-              <li>Twitch: „Präsentiert von“, prominentes Overlay, Start- und Endscreen, 1× Spot pro Stream</li>
-              <li>Discord: eigener Bereich, regelmäßige Aktionsposts, Nennung als Hauptpartner</li>
-              <li>Website: Top-Placement, optional eigene Unterseite, Add-ons wie Gewinnspiele und Rabattcodes</li>
+              <li><strong>Laufzeit:</strong> mindestens 3 Monate, danach monatlich kündbar</li>
+              <li>Twitch: „Präsentiert von“, prominentes Overlay, Start- und Endscreen, 1 Spot pro Stream (max. 30 Sekunden)</li>
+              <li>Discord: Nennung als Hauptpartner, 1 Aktionspost pro Monat</li>
+              <li>Website: Top-Placement im Partnerbereich</li>
+              <li>Add-ons wie eigene Unterseite oder Gewinnspiel sind separat buchbar</li>
+            </ul>
+            <div class="callout" style="border:0;padding:14px 0 0">
+              <div class="actions">
+                <a class="btn primary" href="#kontakt-anfragen">Main Sponsor anfragen</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="add-ons">
+      <div class="container">
+        <h2 class="tag-title lg" id="add-ons">Add-ons, Sachleistung &amp; Konditionen</h2>
+        <p class="sub">Alle Preise in Euro. Ob Umsatzsteuer anfällt, steht im jeweiligen Angebot. Individuelle Pakete sind auf Anfrage möglich.</p>
+        <div class="cards-3">
+          <article class="s-card c-lime">
+            <h3>Add-ons</h3>
+            <p>Einzeln zu jedem Paket buchbar:</p>
+            <ul>
+              <li>Eigene Partner-Unterseite: 25 € einmalig</li>
+              <li>Gewinnspiel-Aktion (Stream + Discord): ab 15 €</li>
+              <li>Rabattcode-Aktion einrichten: 10 € einmalig</li>
+              <li>Zusätzlicher Spot im Stream: 5 € pro Spot</li>
+            </ul>
+          </article>
+          <article class="s-card c-teal">
+            <h3>Sachleistung &amp; Affiliate</h3>
+            <p>Du hast wenig Budget? Dann finden wir einen anderen Weg:</p>
+            <ul>
+              <li>Sachleistung: Produkte, Gutscheine oder Gewinnspiel-Preise statt Geld. Der Gegenwert wird fair abgestimmt</li>
+              <li>Affiliate: Rabattcode oder Partnerlink mit Provision, nur bei Verkäufen</li>
+              <li>Mischmodell: kleiner Fixpreis plus Provision</li>
+            </ul>
+          </article>
+          <article class="s-card c-magenta">
+            <h3>Konditionen</h3>
+            <ul>
+              <li>Early-Partner-Preis: 6 Monate garantiert</li>
+              <li>Alle Werbeinhalte werden eindeutig als Werbung gekennzeichnet</li>
+              <li>Keine Garantie für Klicks, Reichweite oder Verkäufe</li>
+              <li>Bei wachsender Community werden die Preise für neue Partner angepasst</li>
+              <li>Auf Wunsch gibt es nach der Laufzeit einen kurzen Statusbericht mit Zahlen</li>
             </ul>
           </article>
         </div>
@@ -110,7 +172,7 @@ require dirname(__DIR__) . '/components/head.php';
             <h3 class="package-preview-title">Paket-Details</h3>
             <div class="package-preview-body" id="package-preview-body">
               <h4>Noch unentschlossen / individuelles Angebot</h4>
-              <p>Schreib kurz, was du dir vorstellst: Budget, Ziele und Plattformen. Du bekommst ein individuelles Angebot.</p>
+              <p>Schreib kurz, was du dir vorstellst: Budget, Ziele und Plattformen. Auch Sachleistung oder Affiliate sind möglich. Du bekommst ein individuelles Angebot.</p>
             </div>
           </aside>
 
